@@ -1,0 +1,6 @@
+Monte Carlo calculation for first processor using 500000 datapoints = 3.14176
+Monte Carlo calculation for second processor using 500000 datapoints = 3.14168
+Monte Carlo calculation using 1000000 datapoints = 3.14172
+real 0.02
+user 0.02
+sys 0.00

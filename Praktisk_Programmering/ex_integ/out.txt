@@ -1,0 +1,7 @@
+Exercise 1
+Integral_1 = -4
+Exercise 1 is done
+Exercise 2
+Exercise 2 is done and plotted
+We know the ground state of the 1d harmonic oscillator is a gaussian with alpha = 1
+This groundstate has excactly an energy of 1/2 hbar, so we have just found the ground state

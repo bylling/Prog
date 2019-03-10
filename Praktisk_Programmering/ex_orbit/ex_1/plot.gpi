@@ -1,0 +1,4 @@
+set key left top
+set terminal svg background 'white'; \
+plot 'plot.data' using 1:2 with lines title 'mylog' \
+, 'plot.data' using 1:3 with lines dashtype (10,20) title 'math.h logistic' \

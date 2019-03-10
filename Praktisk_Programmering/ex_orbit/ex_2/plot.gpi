@@ -1,0 +1,5 @@
+
+set terminal svg background 'white'; \
+plot 'plot.data' using (1/$2)*sin($1):(1/$2)*cos($1) with lines title 'Newtonian Circular Motion', \
+ 'plot.data' using (1/$3)*sin($1):(1/$3)*cos($1) with lines title 'Newtonian Elliptical Motion', \
+ 'plot.data' using (1/$4)*sin($1):(1/$4)*cos($1) with lines title 'Newtonian Relativistic Motion' \

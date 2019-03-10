@@ -1,0 +1,6 @@
+set term svg background 'white'
+set xlabel "radius [a]"
+set ylabel "F_e (r)"
+plot  \
+	 'plot.txt' using 1:2 with lines title 'r_{max} = 10'\
+  , 'plot.txt' using 1:3 with lines title 'Exact solution' linetype "dashed"  linecolor rgb "blue"\
