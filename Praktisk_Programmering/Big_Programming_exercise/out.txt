@@ -1,0 +1,2 @@
+Exercise 21: Arctangent and Arccotangent
+The plot is made and used in report.pdf
