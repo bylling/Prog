@@ -1,0 +1,6 @@
+
+Exercise 1 is solved with input from a cosine function, which integrated is the sine, the results can be found in the first plot
+Exercise 2 is solved, the coefficients are trivial for the three tested functions. 
+Exercise 2 results are for a const, lin. and quad. function shown in plot ex2.  
+Exercise 3 results are for a cosine function shown in plot ex3.  
+Here the homemade cspline is well reproduceb by the GSL function.  

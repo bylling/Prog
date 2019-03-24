@@ -1,0 +1,6 @@
+set terminal svg background 'white'; \
+plot [0:12][-1:1]  \
+  'plot.data' using 1:2 with dots title 'Lin Spline' \
+, 'initial.data' using 1:2 pt 7 ps 0.5 title 'Initial Points' \
+, 'initial.data' using 1:3 pt 7 ps 0.5 title 'Analytical Integral Points' \
+, 'plot.data' using 1:3 with dots title 'Integral Spline' \

@@ -1,0 +1,9 @@
+set terminal svg background 'white'; \
+plot [0:12][-1:1]  \
+  'cspline.data' using 1:2 with dots title 'Cubic Spline' \
+, 'cspline.data' using 1:5 with lines title 'GSL Cspline' \
+, 'initial.data' using 1:2 pt 7 ps 0.5 title 'Initial Points' \
+, 'initial.data' using 1:3 pt 7 ps 0.5 title 'Analytical Integral Points' \
+, 'cspline.data' using 1:4 with dots title 'Integral Spline' \
+, 'cspline.data' using 1:3 with dots title 'Differential Spline' \
+, 'initial.data' using 1:(-1*($3)) pt 7 ps 0.5 title 'Analytical Differential Points' \
