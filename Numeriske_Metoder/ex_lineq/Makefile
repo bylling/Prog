@@ -7,7 +7,7 @@ CC = clang
 default: out.txt Makefile
 	cat out.txt
 
-out.txt plot.data:main
+out.txt:main
 	./main  1> out.txt  2> error.txt
 
 main: main.o lineqfunctions.o 
