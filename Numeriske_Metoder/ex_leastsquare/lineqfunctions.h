@@ -1,0 +1,11 @@
+void qr_gs_decomp(gsl_matrix*, gsl_matrix*);
+void qr_gs_solve(gsl_matrix*,gsl_matrix*,const gsl_vector*,gsl_vector*);
+void qr_gs_backsub(gsl_matrix*, gsl_vector*);
+void qr_gs_inverse(gsl_matrix* Q, gsl_matrix* R, gsl_matrix* B);
+void vector_print(const char* s, gsl_vector* v);
+void matrix_print(const char* s, gsl_matrix* A);
+void gkl_biadiag(gsl_matrix* U, gsl_matrix* A, gsl_matrix* V);
+void gkl_solve(gsl_matrix* U, gsl_matrix* A, gsl_matrix* V, const gsl_vector* s, gsl_vector* x);
+double glk_determinant(gsl_matrix* U, gsl_matrix* A, gsl_matrix* V);
+void glk_inverse(gsl_matrix* U, gsl_matrix* A, gsl_matrix* V, gsl_matrix* B);
+void glk_backsub(gsl_matrix* R, gsl_vector* x);

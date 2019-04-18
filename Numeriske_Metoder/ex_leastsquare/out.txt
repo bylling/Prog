@@ -1,0 +1,116 @@
+Exercise A has started
+The data has been loaded.
+We start the fitting procedure using QR-decomposition.
+The fitting has ended.
+We have using QR-decomposition found solution vector c = 
+    6.99
+    0.99
+      -2
+
+We have using QR-decomposition found covariance matrix S = 
+   0.178	  0.0493	 -0.0528	
+  0.0493	   0.248	 -0.0458	
+ -0.0528	 -0.0458	  0.0208	
+The fitted line has been calculated, and the fitted line is depicted with the experimental data in the first figure.
+As seen in the plot the fit is accurate. This concludes exercise A. 
+
+ 
+ Exercise B.
+The used function for exercise A, is made based on script from the lecture notes, therefore it can be reused.
+We calculate the new fit, based on the covariance matrix.
+The covariance matrix becomes: 
+   0.178	  0.0493	 -0.0528	
+  0.0493	   0.248	 -0.0458	
+ -0.0528	 -0.0458	  0.0208	
+The calculations have ended and the fitted functions is plotted with the experimental data on the second figure.
+As seen from the plot, the fit and the corresponding error to the fit is accurate to describe the experimental datapoints.
+This concludes exercise B.
+
+ 
+ Exercise C.
+We start by finding the singular value decomposition of A
+SVD has ended to find the following matrices:.
+Initial Matrix A=
+   -2.21	   0.962	  0.0962	
+    0.48	    1.68	    2.24	
+   0.952	    1.02	    2.59	
+    1.33	       1	    3.79	
+    1.45	   0.901	     4.5	
+    4.59	    2.51	    15.6	
+    3.75	    1.87	    13.9	
+    2.23	    1.03	    8.97	
+     4.8	    2.09	    20.7	
+Eigenmatrix for A^T A denoted V=
+  -0.484	   0.838	   0.251	
+  -0.842	  -0.524	   0.128	
+   0.239	  -0.149	    0.96	
+Eigenvalues for A^T A denoted on the diagonal D=
+    3.45	       0	       0	
+       0	     6.4	       0	
+       0	       0	1.08e+03	
+Othogonal Basis U=
+   0.154	  -0.939	 -0.0103	
+    -0.6	  -0.322	  0.0756	
+  -0.376	 -0.0482	   0.087	
+  -0.315	  0.0106	   0.125	
+  -0.207	  0.0283	   0.146	
+  -0.328	  0.0802	   0.501	
+ -0.0363	   0.036	   0.443	
+   0.102	-0.00268	   0.283	
+   0.463	 -0.0646	    0.65	
+Singuular Value matrix S=
+    1.86	       0	       0	
+       0	    2.53	       0	
+       0	       0	    32.8	
+We test this by calculating A from decomposition U S V^T.
+We find succesively U * S * V^T = 
+   -2.21	   0.962	  0.0962	
+    0.48	    1.68	    2.24	
+   0.952	    1.02	    2.59	
+    1.33	       1	    3.79	
+    1.45	   0.901	     4.5	
+    4.59	    2.51	    15.6	
+    3.75	    1.87	    13.9	
+    2.23	    1.03	    8.97	
+     4.8	    2.09	    20.7	
+We test that the decomposition can solve a linear least squares problem, by a random matrix problem as done previously in the exercise on linear equations.
+The random (from 0 to 10) initial matrix is:
+A=
+     8.4	    3.94	    7.83	
+    7.98	    9.12	    1.98	
+    3.35	    7.68	    2.78	
+The random (from 0 to 10) vector is:
+b=
+    5.54
+    4.77
+    6.29
+
+We start the singular value decomposition, and solutions of the linear system:
+The singular value decomposition has ended.
+We find the solution for the linear system as X= 
+  -0.411
+   0.712
+   0.789
+
+We find the solution correct since B = A*X = 
+    5.54
+    4.77
+    6.29
+
+We can hereby find solutions for a typical linear equation problem using the least squares model from the Singular Value decomposition.
+We now for the ultimate test implement a function that can give the solution for an ordinary least-squares fit, by this singular-value decomposition.
+Ordinary Least square fit for singular-value decomposition has started.
+Ordinary Least square fit for singular-value decomposition has ended.
+We have using SV-decomposition found solution vector c = 
+    6.99
+    0.99
+      -2
+
+We have using SV-decomposition found covariance matrix S = 
+   0.178	  0.0493	 -0.0528	
+  0.0493	   0.248	 -0.0458	
+ -0.0528	 -0.0458	  0.0208	
+The fit has been calculated, and the fitted line is depicted with the experimental data in the third figure.
+As seen in the plot the fit is accurate, just as in previous exercises. 
+  This concludes exercise C. 
+All of the relevant figures can be seen in the corresponding svg.files. 
