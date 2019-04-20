@@ -12,4 +12,4 @@ out.txt: main
 main: main.o rootfunctions.o lineqfunctions.o
 
 clean:
-	$(RM) out* *.o *.svg error.txt
+	$(RM) out* *.o *.svg error.txt main

@@ -1,0 +1,78 @@
+Exercise A has started
+The Newton's method for analytic Jacobian and back-tracking linesearch has been implemented.
+We test the implementation by at first solving the system of equations A*x*y = 1 , exp(-x) + exp(-y) = 1 + 1/A, with A= 10000 
+We use initial point at x0 = 
+       0
+       1
+
+The Newton method used 10 steps and 42 functioncalls.
+The symmetric solutions is supposed to be at  x = [9.1061,0.00010981] or [0.00010981,9.1061], and is found to be x = 
+ 1.1e-05
+    9.11
+
+We furthermore test the implementation by finding the minimum of the Rosenbrock funciton, 
+We use initial point at x0 = 
+       0
+       0
+
+The Newton method used 18 steps and 102 functioncalls.
+Solution is supposed to be x=[1,1] and found to be x = 
+       1
+       1
+
+We also test the implementation by finding the minimum of the Himmelblau's funciton, 
+We use initial point at x0 = 
+       1
+       1
+
+The Newton method used 8 steps and 30 functioncalls.
+Solution is supposed to be one of four local minima at f(3.0,2.0)=0.0,f(−2.805118,3.131312)= 0.0, f(−3.779310,−3.283186)=0.0 or f(3.584428,-1.848126)=0.0, and found to be x = 
+   -3.78
+   -3.28
+
+However since this function do not have the symmetry of the others, we cannot be sure that this point is not a maximum. Since this gradient has two direction components, and therefore cant be reduced to a minima, unless one test the found value afterwards, or know the approximate location of the minima. 
+This concludes the first exercise.  
+ 
+ 
+Exercise B has started
+The Newton's method for numerical calculation of the Jacobian and back-tracking linesearch has been implemented.
+We test the implementation, by comparing with the results of the previously done analytical calculations.
+For all of these, we use the same start-values and a stepsize of 0.001 
+We start by calculating the system of linear equaitons.
+The Numercal method used 10 steps and 62 functioncalls.  
+Compared to the analytical of 10 steps and 42 functioncalls. 
+The symmetric solutions is supposed to be at  x = [9.1061,0.00010981] or [0.00010981,9.1061], and is found to be x =
+ 1.1e-05
+    9.11
+
+Now we find the solution for the minimum of the Rosenbrock funciton.
+The Numercal method used 12 steps and 78 functioncalls.  
+Compared to the analytical of 18 steps and 102 functioncalls. 
+Solution is supposed to be x=[1,1] and found numerically to be x = 
+       1
+       1
+
+The Numercal method used 9 steps and 51 functioncalls.  
+Compared to the analytical of 8 steps and 30 functioncalls. 
+Solution is supposed to be one of four local minima at f(3.0,2.0)=0.0,f(−2.805118,3.131312)= 0.0, f(−3.779310,−3.283186)=0.0 or f(3.584428,-1.848126)=0.0, and found to be x = 
+   -3.78
+   -3.28
+
+We hereby see, that in most cases the analytic solver is the best. But since the numerical solver depends strongly on the start paramers and stepsize, one cound be able to find itself in a position, where a numerical solver might compensate in a lucky way, to reduce the step size.  
+At last a comparison must be made with the built-in GSL functions. Theese calculations are started. 
+
+The root finding starts: 
+
+ The GSL_root finding for the linear function has ended, in 163 steps at point [1.09833e-05,9.10477] 
+
+The root finding starts: 
+
+ The GSL_root finding for the Rosenbrock function has ended, in 169 steps at point [1,1] 
+
+The root finding starts: 
+
+ The GSL_root finding for the Himmelblau function has ended, in 11 steps at point [-0.127961,-1.95371] 
+To compare we find, that the GSL-multiroot functions is doing more steps than our functions, in order to find the correct value. However, the GSL functions are modified and optimized for the platfor. This gives the result that the functioncalls will be reduced, but sometimes make the stepnumber go higher instead. Therefore even thought it uses more steps, it might be way faster, and could be further optimized using a designated type instead of the gsl_multiroot_fsolver_hybrids 
+With a comparison to the GSL routines, and the implementation of the numerical solver for the Jacobian, exercise B is hereby concluded.
+ 
+ Exercise C has started
