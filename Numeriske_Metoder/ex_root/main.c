@@ -19,11 +19,14 @@ fprintf(stdout, "We test the implementation by at first solving the system of eq
 // We allocate the parameters
 gsl_vector* x_rosen = gsl_vector_alloc(2);
 gsl_vector* x_rosen2 = gsl_vector_alloc(2);
+gsl_vector* x_rosen3 = gsl_vector_alloc(2);
 gsl_vector* x_lineq = gsl_vector_alloc(2);
 gsl_vector* x_lineq2 = gsl_vector_alloc(2);
+gsl_vector* x_lineq3 = gsl_vector_alloc(2);
 gsl_vector* x_himmel = gsl_vector_alloc(2);
 gsl_vector* x_himmel2 = gsl_vector_alloc(2);
-gsl_vector* functioncall = gsl_vector_alloc(6);
+gsl_vector* x_himmel3 = gsl_vector_alloc(2);
+gsl_vector* functioncall = gsl_vector_alloc(9);
 
 // We set start parameters
 gsl_vector_set(x_lineq, 0, 0);
@@ -102,7 +105,6 @@ gsl_vector_set(x_himmel2, 1, 1);
 gsl_vector_set(functioncall, 5, 0);
 int stephimmel2 = newton(&function_himmel, x_himmel2,stepsize, 1e-6,functioncall);
 fprintf(stdout,"The Numercal method used %i steps and %g functioncalls.  \nCompared to the analytical of %i steps and %g functioncalls. \n",stephimmel2,gsl_vector_get(functioncall,5),stephimmel1,gsl_vector_get(functioncall,2));
-
 vector_print("Solution is supposed to be one of four local minima at f(3.0,2.0)=0.0,f(−2.805118,3.131312)= 0.0, f(−3.779310,−3.283186)=0.0 or f(3.584428,-1.848126)=0.0, and found to be x = ",x_himmel2);
 
 fprintf(stdout,"We hereby see, that in most cases the analytic solver is the best. But since the numerical solver depends strongly on the start paramers and stepsize, one cound be able to find itself in a position, where a numerical solver might compensate in a lucky way, to reduce the step size.  \n");
@@ -142,16 +144,55 @@ fprintf(stdout,"With a comparison to the GSL routines, and the implementation of
 // Exercise C
 fprintf(stdout, "Exercise C has started\n" );
 
+fprintf(stdout, "A modified Newton's method for analytic Jacobian and back-tracking linesearch has been implemented using quadratic interpolation for the calculation of the lambda-parameter.\n" );
+fprintf(stdout, "The method is once again tested on all three model systems, to compare the number of function calls. \n" );
+fprintf(stdout, "For all of these, we use the same start-values. \n");
+fprintf(stdout, "We start by calculating the system of linear equaitons.\n");
 
+//For the linear equations we calculate:
+// We set start parameters
+gsl_vector_set(x_lineq3, 0, 0);
+gsl_vector_set(x_lineq3, 1, 1);
+double oldfunctioncall1 = gsl_vector_get(functioncall,0);
+gsl_vector_set(functioncall, 0, 0);
+int steplineq3 = newton_with_jacobian_quad_int(&function_linear_equation_with_j, x_lineq3, 1e-6,functioncall);
+fprintf(stdout,"The Quadratic method used %i steps and %g functioncalls.  \nCompared to the analytical of %i steps and %g functioncalls. \n",steplineq3,gsl_vector_get(functioncall,0),steplineq1,oldfunctioncall1);
+vector_print("The symmetric solutions is supposed to be at  x = [9.1061,0.00010981] or [0.00010981,9.1061], and is found to be x =",x_lineq3);
+
+fprintf(stdout, "Now we find the solution for the minimum of the Rosenbrock funciton.\n");
+
+//For the Rosenbrock we calculate:
+gsl_vector_set(x_rosen3, 0, 0);
+gsl_vector_set(x_rosen3, 1, 0);
+double oldfunctioncall2 = gsl_vector_get(functioncall,1);
+gsl_vector_set(functioncall, 1, 0);
+int steprosen3 = newton_with_jacobian_quad_int(&function_rosenbrock_with_j, x_rosen3, 1e-6,functioncall);
+fprintf(stdout,"The Quadratic method used %i steps and %g functioncalls.  \nCompared to the analytical of %i steps and %g functioncalls. \n",steprosen3,gsl_vector_get(functioncall,1),steprosen1,oldfunctioncall2);
+vector_print("Solution is supposed to be x=[1,1] and found numerically to be x = ",x_rosen3);
+
+
+//For the Himmelblau function we calculate:
+gsl_vector_set(x_himmel3, 0, 1);
+gsl_vector_set(x_himmel3, 1, 1);
+double oldfunctioncall3 = gsl_vector_get(functioncall,2);
+gsl_vector_set(functioncall, 2, 0);
+int stephimmel3 = newton_with_jacobian_quad_int(&function_himmel_with_j, x_himmel3, 1e-6,functioncall);
+fprintf(stdout,"The Quadratic method used %i steps and %g functioncalls.  \nCompared to the analytical of %i steps and %g functioncalls. \n",stephimmel3,gsl_vector_get(functioncall,2),stephimmel1,oldfunctioncall3);
+vector_print("Solution is supposed to be one of four local minima at f(3.0,2.0)=0.0,f(−2.805118,3.131312)= 0.0, f(−3.779310,−3.283186)=0.0 or f(3.584428,-1.848126)=0.0, and found to be x = ",x_himmel3);
+fprintf(stdout,"We hereby find, that once again for some cases, the quadratic method is way better. But since the stepper in the Rosenbrock function, with its starting step is very luckely choosen, so it reduces to a one dimentional problem in the linear case, then that problem is another story. This is done to demonstrate, that for special situations, one can have the simplest solvers, to be the best. But for most cases, the quadratic method drasticly reduces both functioncalls and steps. \n");
+fprintf(stdout, "This concludes exercise C.\n");
 
 // We free the parameters
 
 gsl_vector_free(x_lineq);
 gsl_vector_free(x_lineq2);
+gsl_vector_free(x_lineq3);
 gsl_vector_free(x_rosen);
 gsl_vector_free(x_rosen2);
+gsl_vector_free(x_rosen3);
 gsl_vector_free(x_himmel);
 gsl_vector_free(x_himmel2);
+gsl_vector_free(x_himmel3);
 gsl_vector_free(functioncall);
  return 0;
 }

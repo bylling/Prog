@@ -13,3 +13,4 @@ int gsl_root_equation_himmel(const gsl_vector * x, void * params, gsl_vector * f
 int gslroot_lin(double * z,double * z2);
 int gslroot_rosen(double * z,double * z2);
 int gslroot_himmel(double * z,double * z2);
+int newton_with_jacobian_quad_int(void function(gsl_vector* x, gsl_vector* fx, gsl_matrix* J, gsl_vector* functioncall), gsl_vector* x, double epsilon,  gsl_vector* functioncall);

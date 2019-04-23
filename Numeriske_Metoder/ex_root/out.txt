@@ -76,3 +76,28 @@ To compare we find, that the GSL-multiroot functions is doing more steps than ou
 With a comparison to the GSL routines, and the implementation of the numerical solver for the Jacobian, exercise B is hereby concluded.
  
  Exercise C has started
+A modified Newton's method for analytic Jacobian and back-tracking linesearch has been implemented using quadratic interpolation for the calculation of the lambda-parameter.
+The method is once again tested on all three model systems, to compare the number of function calls. 
+For all of these, we use the same start-values. 
+We start by calculating the system of linear equaitons.
+The Quadratic method used 9 steps and 29 functioncalls.  
+Compared to the analytical of 10 steps and 42 functioncalls. 
+The symmetric solutions is supposed to be at  x = [9.1061,0.00010981] or [0.00010981,9.1061], and is found to be x =
+ 1.1e-05
+    9.11
+
+Now we find the solution for the minimum of the Rosenbrock funciton.
+The Quadratic method used 551 steps and 1927 functioncalls.  
+Compared to the analytical of 18 steps and 102 functioncalls. 
+Solution is supposed to be x=[1,1] and found numerically to be x = 
+       1
+       1
+
+The Quadratic method used 9 steps and 28 functioncalls.  
+Compared to the analytical of 8 steps and 30 functioncalls. 
+Solution is supposed to be one of four local minima at f(3.0,2.0)=0.0,f(−2.805118,3.131312)= 0.0, f(−3.779310,−3.283186)=0.0 or f(3.584428,-1.848126)=0.0, and found to be x = 
+   -3.78
+   -3.28
+
+We hereby find, that once again for some cases, the quadratic method is way better. But since the stepper in the Rosenbrock function, with its starting step is very luckely choosen, so it reduces to a one dimentional problem in the linear case, then that problem is another story. This is done to demonstrate, that for special situations, one can have the simplest solvers, to be the best. But for most cases, the quadratic method drasticly reduces both functioncalls and steps. 
+This concludes exercise C.

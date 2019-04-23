@@ -371,3 +371,78 @@ int gslroot_himmel(double * z,double * z2){
 	gsl_vector_free(start);
 	return 0;
 }
+
+int newton_with_jacobian_quad_int(void function(gsl_vector* x, gsl_vector* fx, gsl_matrix* J, gsl_vector* functioncall), gsl_vector* x, double epsilon,  gsl_vector* functioncall){
+    //  This function calculates the root by Newton's method with an analytically jacobian using quadratic interpolation
+    // Takes in f: takes the input vector x, calculates analytically the vector f(x), the jacobian matrix, secong arguement is vector x: on input contains the starting point, on output becomes the latest approximation to the root;
+    //  at last it takes double epsilon: the accuracy goal.
+
+// The function is based on the python script example in the lecture notes, and modified to do quadratic interpolation
+// We allocate the needed parameters
+int number_of_eq=x->size;
+gsl_matrix* R = gsl_matrix_alloc(number_of_eq, number_of_eq);
+gsl_matrix* J = gsl_matrix_alloc(number_of_eq,number_of_eq);
+gsl_vector* fx = gsl_vector_alloc(number_of_eq);
+
+gsl_vector* deltax = gsl_vector_alloc(number_of_eq);
+gsl_vector* new_fx = gsl_vector_alloc(number_of_eq);
+gsl_vector* cfx = gsl_vector_alloc(number_of_eq);
+double lambda = 1.00;
+int step=0;
+double functionnorm, newfunctionnorm;
+// We start the stepping procedure:
+do {
+  step++;
+function(x,fx,J,functioncall); // We update the Jacobian and funciton values.
+gsl_vector_memcpy(cfx, fx);
+// Now we need to Solve system J∆x=−f(x) for stepping size delta x this is done through QR decomposition and multiplying with Q-invese as done in previous exercise on linear equations.
+// First we QR decompose
+ qr_gs_decomp(J, R);
+ // Then we solve the system using backsubstitution
+ qr_gs_solve(J, R, cfx, deltax);
+ lambda = 1.00;
+ // We find the new x by x + lambda* -deltax
+gsl_vector_scale (deltax, -lambda);
+
+// For the quadratic interpolation we need the values of g0, gprime and glambda, theese are now defined and found
+double g0 = 0.5*pow(gsl_blas_dnrm2(fx),2); //g0 = 1/2 * Norm(F(x))^2
+double gprime = -pow(gsl_blas_dnrm2(fx),2); // gprime = - Norm (F(x))^2
+double glambda = 0; // for the first step we do not have any previous lambda to use
+
+gsl_vector_add(x, deltax);
+
+// we evaluate the function at the new x
+function(x,new_fx,J,functioncall);
+// We find the norm of the function, being the distance to 0.0 for both the old and new function
+functionnorm = gsl_blas_dnrm2(fx);
+newfunctionnorm = gsl_blas_dnrm2(new_fx);
+
+// We find the propper lambda factor by evluating the criteria
+ while (newfunctionnorm > (1-lambda/2.00)*functionnorm && lambda > 1.00/64.00) {
+   double c = (glambda-g0-gprime*lambda)/(lambda*lambda); // We calculate C based on formula 11 in the lecture notes.
+	 glambda = g0+gprime*lambda+c*lambda*lambda; // We finf g(lambda) according to the formula 10 in the lecture notes.
+
+   // If the lambda is to large, we advance it using the quadratic formula
+
+   gsl_vector_scale(deltax, lambda);
+   gsl_vector_add(x, deltax);
+   // we evaluate the function at the new x
+   function(x,new_fx,J,functioncall);
+   newfunctionnorm = gsl_blas_dnrm2(new_fx);
+   lambda = gprime/(2*c);
+ }
+
+// When lambda is rescaled we find the new value of the function at the new place
+function(x,new_fx,J,functioncall);
+newfunctionnorm = gsl_blas_dnrm2(new_fx);
+}while(newfunctionnorm > epsilon);
+
+// We free the parameters
+gsl_matrix_free(R);
+gsl_matrix_free(J);
+gsl_vector_free(fx);
+gsl_vector_free(deltax);
+gsl_vector_free(cfx);
+gsl_vector_free(new_fx);
+return step;
+}
