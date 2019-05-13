@@ -1,0 +1,6 @@
+set terminal svg background 'white'; \
+set xlabel 't';\
+set ylabel 'y';\
+plot [-0.2:10.5][-0.2:5.3]  \
+  'data1.txt' using 1:2:3 with yerrorbars title 'y(t)' \
+, 'fitdata.txt' using 1:2 with lines title 'Fit using Quasi Newton' \

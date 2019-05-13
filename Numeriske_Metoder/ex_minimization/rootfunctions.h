@@ -1,0 +1,16 @@
+int newton_with_jacobian(void function(gsl_vector* x, gsl_vector* fx, gsl_matrix* J,gsl_vector* functioncall), gsl_vector* x,  double epsilon,gsl_vector* functioncall);
+int newton(void function(gsl_vector* x, gsl_vector* fx, gsl_vector* functioncall), gsl_vector* x,double dx, double epsilon,gsl_vector* functioncall);
+void function_rosenbrock_with_j(gsl_vector* x,gsl_vector* y, gsl_matrix* J,gsl_vector* functioncall);
+void function_linear_equation_with_j(gsl_vector* x,gsl_vector* y, gsl_matrix* J,gsl_vector* functioncall);
+void function_himmel_with_j(gsl_vector* x,gsl_vector* y, gsl_matrix* J,gsl_vector* functioncall);
+void function_linear_equation(gsl_vector* x,gsl_vector* y, gsl_vector* functioncall);
+void function_rosenbrock(gsl_vector* x,gsl_vector* y,  gsl_vector* functioncall);
+void function_himmel(gsl_vector* x,gsl_vector* y, gsl_vector* functioncall);
+void numjacobian(void function(gsl_vector* x, gsl_vector* fx, gsl_vector* functioncall), gsl_matrix* J, gsl_vector* x, gsl_vector* fx, gsl_vector* fx_dx, double dx,gsl_vector* functioncall);
+int gsl_root_equation_lin(const gsl_vector * x, void * params, gsl_vector * f);
+int gsl_root_equation_rosen(const gsl_vector * x, void * params, gsl_vector * f);
+int gsl_root_equation_himmel(const gsl_vector * x, void * params, gsl_vector * f);
+int gslroot_lin(double * z,double * z2);
+int gslroot_rosen(double * z,double * z2);
+int gslroot_himmel(double * z,double * z2);
+int newton_with_jacobian_quad_int(void function(gsl_vector* x, gsl_vector* fx, gsl_matrix* J, gsl_vector* functioncall), gsl_vector* x, double epsilon,  gsl_vector* functioncall);
