@@ -1,0 +1,25 @@
+Exercise A has started
+An Embedded Runge-Kutta ODE integrator have been implemented. 
+For a quick demonstration we reproduce the system of the orbit-exercise 2-III from practical programming. 
+Runge-Kutta 12 has initialized. 
+Runge-Kutta 12 is done. 
+The Runge-Kutta ODE-solver has returned the data for a Relativistic Newtonian Motion with parameters from Orbit 2-III, is plotted in the figure. One can verify that the results are correct by comparing to the Orbit exercise. 
+With a successfull demonstration of the Runge-Kutta 12 ODE integrator and corresponding driver, the first exercise is done.
+ 
+ 
+Exercise B has started
+A Modified driver has been made, in which the path is stored in a matrix. This way, we can leave out a for-loop in the mainfile, and call the driver directly. Similar to exercise A, the Relativistic Newtonian Motion will now be calculated using this modified driver.
+Modified Runge-Kutta 12 has initialized. 
+Modified Runge-Kutta 12 is done. 
+The Modified Runge-Kutta ODE-solver has returned the data in a convenient matrix. The calculation of a Relativistic Newtonian Motion with parameters from Orbit 2-III, is plotted in the corresponding figure. One can verify that the results are correct by comparing to the Orbit exercise, or directly seing that the function coincides with the plotted function from the previous exercise. 
+With a successfull demonstration of the modified driver, the second exercise is also done.
+ 
+ 
+Exercise C has started
+A solver for the calculation of definite integrals using the Runge-Kutta 12 ODE-solver from exercise A have been implemented. A test will be made by calculation of the integral of x^-x from 0 to 1, which is known to give approximately 1.291285. This is not a simple function and will provide a challenge for the integration routine. 
+The definite integral will now be calculated 
+The calculation is done. 
+The calculation have given the solution to the definite integral on 1.29129. Compared to the known solution on 1.291285. Furthermore the indefinite integral is plotted with the function in the corresponding figure, since the algorithm is also capable of producing that.
+With a successfull demonstration of the integrating ODE-implementation, the third exercise is also done, which completes the investigation on ODE's. 
+ 
+ 

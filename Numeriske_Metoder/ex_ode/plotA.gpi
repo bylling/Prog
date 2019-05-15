@@ -1,0 +1,4 @@
+set terminal svg background 'white'; \
+set xlabel 'x';\
+set ylabel 'y';\
+plot 'plotdata.txt' using (1/$2)*sin($1):(1/$2)*cos($1) with lines title 'Newtonian Relativistic Motion with Runge-Kutta 1-2 Method' \
