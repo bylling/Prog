@@ -18,7 +18,7 @@ ex_C_plot.svg:plotC.gpi plotdata3.txt
 out.txt plotdata3.txt plotdata2.txt plotdata1.txt: main
 	./main 1> out.txt  2> error.txt
 
-main: main.o odefunctions.o
+main: main.o odefunctions.o integrationfunctions.o
 
 clean:
 	$(RM) out* *.o *.svg error.txt main plotdata.txt plotdata2.txt plotdata3.txt

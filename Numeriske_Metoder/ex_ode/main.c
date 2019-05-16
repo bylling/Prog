@@ -6,6 +6,7 @@
 #include<gsl/gsl_blas.h>
 #include<stdlib.h>
 #include"odefunctions.h"
+#include"integrationfunctions.h"
 
 
 int main(int argc, char** argv){
@@ -97,8 +98,28 @@ for (double x = 0.00; x < 1; x+=0.0005) {
       }
     fprintf(stdout, "The calculation is done. \n" );
     fprintf(stdout, "The calculation have given the solution to the definite integral on %g. Compared to the known solution on 1.291285. Furthermore the indefinite integral is plotted with the function in the corresponding figure, since the algorithm is also capable of producing that.\n",result);
+  fprintf(stdout,"For comparison the same integral is calculated using the adaptive integrator from the integration-exercise.\n" );
 
-    fprintf(stdout, "With a successfull demonstration of the integrating ODE-implementation, the third exercise is also done, which completes the investigation on ODE's. \n \n \n" );
+// We compare with the found adaptive integrator from the following exerice:
+
+// We initialze the integration:
+int calls1 = 0;
+double err1 = 0;
+double ai=0, bi=1, acci=1e-8, epsi=1e-8;
+// We setup the funciton
+double f(double x){calls1++; return pow(x,-x);};
+// We calculate the integral
+fprintf(stdout, "The calculation is started. \n" );
+double Q1 = adapt(f, ai, bi, acci, epsi, &err1);
+fprintf(stdout, "The calculation is done. \n" );
+
+// We print the values
+fprintf(stdout,"The found values from the adaptive integrator are: integral I=%lg, error=%lg, calls=%i\n\n",Q1,err1, calls1);
+fprintf(stdout, "The calculation by the ODE-integrator is hereby supported by the findings of the adaptive recursive integration routine. \n" );
+
+fprintf(stdout, "With a successfull demonstration of the integrating ODE-implementation, and comparison with the adaptive recursive integration routine, the third exercise is also done, which completes the investigation on ODE's. \n \n \n" );
+
+
 
 
 // We free the parameters

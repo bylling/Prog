@@ -1,0 +1,96 @@
+Exercise A has started
+
+An recursive adaptive integrator have been implemented. It can with a given accuracy-goal find the integral through a recursive calculation, with a error-calulation based on a lower order method. For each layer of recursion, points are saved and reused when sepperating in smaller steps. 
+The integrator is tested on the following integrals, with returned values, errors and number of recursive iterations: 
+
+
+Test 1: I = ∫ from 0 to 1 of √(x) dx = 2/3 = 0.66..
+The calculation is started. 
+The calculation is done. 
+The found values are: integral I=0.666681, error=3.32605e-05, calls=40
+
+Test 2: I = ∫ from 0 to 1 of 1/√(x) dx = 2 
+The calculation is started. 
+The calculation is done. 
+The found values are: integral I=2, error=1.19752e-05, calls=17140
+
+Test 3: I = ∫ from 0 to 1 of ln(x)/√(x) dx = -4 
+The calculation is started. 
+The calculation is done. 
+The found values are: integral I=-4, error=3.27216e-05, calls=29972
+
+The tests have succeded, all with the same wanted accuracy, and as is clearly seen in the number of calls, some functions are more difficult to estimate than others, especially when dealing with diverging terms as the logarithm and 1/x. 
+For serious calculations, we want to calculate the following integral with as many significant digits as possible, until we at some point reaches a divergence in calculation-cost of the recursive calculator, probably due to the restriction from the machine-epsilon. 
+
+Calculation of I = ∫ from 0 to 1 of 4 *√(1-(1-x)2) dx = π  
+The calculation is started. 
+The calculation is done. 
+The found values are: 
+ Known solution: π = 3.141592653589793238462 
+ Found solution I =  3.141592653589793115998 
+ With error=0 and calls=127191304
+ Beyond this point of accuracy, the calulation time increases dramatically. 
+As is seen at this point we reach an accuracy smaller than the machine-epsilon, which results in the fact that the recursive relation will not be able to converge in a simple manner any more. 
+With this successfull demonstration of the tecursive adaptive integrator, the first exercise is hereby finished.
+
+
+Exercise B has started
+
+An recursive adaptive integrator have been implemented using the Clenshaw-Curtis variable transform. This transformation can for some integrals improve accuracy, while for others reduce accuracy, dependent on whether the transformation suits the function, in order to direct a easier function for the recursive solver. We test this integrator on the same integrals as before, since a few of these diverges at the borders, and thereby can get an advantage when being transformed. Furthermore we calculate the same integrals by the GSL-procedure for comparison, here we use the Gauss-Kronrod 21 integration algorithm QAGS to handle some the the diverging regimes. The calculation and comparison proceeds: 
+
+Test 1: I = ∫ from 0 to 1 of √(x) dx = 2/3 = 0.66..
+The calculation is started. 
+The calculation is done. 
+The previous values are:    integral I=0.666681, error=3.32605e-05, calls=40
+The transformed values are: integral I=0.666667, error=4.49565e-06, calls=64
+The GSL values are:         integral I=0.666667, error=7.734e-05, calls=189
+
+Test 2: I = ∫ from 0 to 1 of 1/√(x) dx = 2 
+The calculation is started. 
+The calculation is done. 
+The previous values are:    integral I=2, error=1.19752e-05, calls=17140
+The transformed values are: integral I=2, error=1.03007e-05, calls=52
+The GSL values are:         integral I=2, error=5.77316e-15, calls=231
+
+Test 3: I = ∫ from 0 to 1 of ln(x)/√(x) dx = -4 
+The calculation is started. 
+The calculation is done. 
+The previous values are:    integral I=-4, error=3.27216e-05, calls=29972
+The transformed values are: integral I=-4, error=3.8707e-06, calls=272
+The GSL values are:         integral I=-4, error=1.35447e-13, calls=315
+
+Calculation of I = ∫ from 0 to 1 of 4 *√(1-(1-x)2) dx = π  
+The calculation is started. 
+The calculation is done. 
+The found values are: 
+ Known solution:      π =   3.141592653589793238462 
+ Previous solution    I =   3.141592653589793115998 
+ Transformed solution I =   3.141592653589793115998 
+ GSL solution         I =   3.1415926535897926719088 
+ With previous   error=0  and calls=127191304
+ New transformed error=1.43231e-22  and calls=183521712
+ and GSL         error=5.32907e-15   and calls=315
+ Beyond this point of accuracy, the calulation time increases dramatically. 
+From the calculations, we see that for integral test 2 and 3, where the logarithm and 1/x will diverge in the interval, the transformation significantly improves the integration procedure. However for the others we recieve a similar error, but with more function-calls, which might be problematic if the function is significantly difficult to calculate. 
+Comparing to the GSL-routines, when the function diverges, theese have significantly better accuracy than our routines but also require a bit more functioncalls. However this can be changed by changing the GSL-algoritm used in the routine, in which there are a dusin. We see at test 1, for a simple function, our minmalistic first approach still provides the best result, however in regions with singularities the others are superior. An interesting aspect is the fact that for the last calculation, the GSL-method will be performed way faster and in way less functioncalls. Thereby it seems to be superior at fast calculations with high accuracy. However the restrictions on the GSL-solver is a bit less, in order not to have errors when it compiles. 
+With this successfull demonstration of the recursive adaptive integrator using a Clenshaw-Curtis transformation, and a comparison with the GSL-routines, the second exercise is hereby finished.
+
+
+Exercise C has started
+
+An recursive adaptive integrator have been implemented using a variable transform to be able to calculate from a value 'a' to infinity. Furthermore we calculate the same integrals by the GSL-procedure for comparison, here we use the gsl_integration_qagiy integration algorithm, which actually works by the same transformation. The calculation and comparison proceeds: 
+
+As a test function we use: I = ∫ from 0 to inf of x/(exp(x)-1) dx = pi²/6.
+The calculation is started. 
+The calculation is done. 
+The found values are: 
+ Known solution: π²/6 =  1.6449340668482264364724 
+ My solution        I =  1.6449340668471577053822 
+  GSL solution      I =  1.6449340668482266281103 
+ With My found error=5.0463e-15  and calls=175536
+ and GSL       error=1.06345e-12 and calls=225
+ Beyond this point of accuracy, the calulation time increases drastically. 
+We see that both in accuracy and number of function-calls, the GSL-routine is superior. However the implemented transformation works, and provides a rather good accuracy.
+With this successfull demonstration of the recursive adaptive integrator using a transformation to handle infinite limits, and a comparison with the GSL-routines, the third exercise is hereby finished.
+ This also concludes the examination of adaptive integration. 
+

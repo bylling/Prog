@@ -20,6 +20,12 @@ A solver for the calculation of definite integrals using the Runge-Kutta 12 ODE-
 The definite integral will now be calculated 
 The calculation is done. 
 The calculation have given the solution to the definite integral on 1.29129. Compared to the known solution on 1.291285. Furthermore the indefinite integral is plotted with the function in the corresponding figure, since the algorithm is also capable of producing that.
-With a successfull demonstration of the integrating ODE-implementation, the third exercise is also done, which completes the investigation on ODE's. 
+For comparison the same integral is calculated using the adaptive integrator from the integration-exercise.
+The calculation is started. 
+The calculation is done. 
+The found values from the adaptive integrator are: integral I=1.29129, error=6.27975e-10, calls=2000
+
+The calculation by the ODE-integrator is hereby supported by the findings of the adaptive recursive integration routine. 
+With a successfull demonstration of the integrating ODE-implementation, and comparison with the adaptive recursive integration routine, the third exercise is also done, which completes the investigation on ODE's. 
  
  

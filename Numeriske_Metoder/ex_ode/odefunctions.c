@@ -204,7 +204,7 @@ void integration_by_ode(
   double* result /* The result, that are send back */
 ){
 
-// Since we need a function to send into the stepper, we define a one dimensional function, returns the value of the function, as the point-to-point differential for the solution to the integral, since this returns the pont of the function which are integrated.
+// Since we need a function to send into the stepper, we define a one dimensional nested function, returns the value of the function, as the point-to-point differential for the solution to the integral, since this returns the pont of the function which are integrated.
   void function_in_integral(double t, gsl_vector* y, gsl_vector* functionvalue){
         gsl_vector_set(functionvalue, 0, function(t)); // y'=f(x)
       }
