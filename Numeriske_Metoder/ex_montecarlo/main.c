@@ -7,7 +7,7 @@
 #include"montecarlofunctions.h"
 
 
-double my_function(double x){return x*x;}
+
 int main (void)
 {
 

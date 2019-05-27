@@ -1,0 +1,8 @@
+set terminal svg background 'white'; \
+set xlabel "x";\
+set ylabel "f(x)";\
+plot   \
+  'plotdata2.txt' using 1:2 pt 7 ps 0.5 title 'Neural Network Fit with 7 Neurons', \
+  'plotdata2.txt' using 1:3 with lines title 'Analytical Step Function',\
+  'plotdata2.txt' using 1:4 pt 7 ps 0.5 title 'Neural Network Derivative',\
+  'plotdata2.txt' using 1:5 pt 7 ps 0.5 title 'Neural Network Anti-derivative',\
