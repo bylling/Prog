@@ -1,4 +1,7 @@
+
 Exercise A has started
+
+An algoritm for making an ordinary least-squares-fit with uncertainties using QR decomposition have been implemented, and will now be tested on the given datapoints.
 The data has been loaded.
 We start the fitting procedure using QR-decomposition.
 The fitting has ended.
@@ -12,22 +15,25 @@ We have using QR-decomposition found covariance matrix S =
   0.0493	   0.248	 -0.0458	
  -0.0528	 -0.0458	  0.0208	
 The fitted line has been calculated, and the fitted line is depicted with the experimental data in the first figure.
-As seen in the plot the fit is accurate. This concludes exercise A. 
+As seen in the plot the fit is accurate. This demonstration concludes exercise A. 
 
  
- Exercise B.
-The used function for exercise A, is made based on script from the lecture notes, therefore it can be reused.
-We calculate the new fit, based on the covariance matrix.
-The covariance matrix becomes: 
+ Exercise B has started.
+
+We reuse the function for exercise A, since here the requested covariance matrix is already found.
+We calculate the new fits, based on the covariance matrix.
+The covariance matrix are: 
    0.178	  0.0493	 -0.0528	
   0.0493	   0.248	 -0.0458	
  -0.0528	 -0.0458	  0.0208	
 The calculations have ended and the fitted functions is plotted with the experimental data on the second figure.
 As seen from the plot, the fit and the corresponding error to the fit is accurate to describe the experimental datapoints.
-This concludes exercise B.
+This examination concludes exercise B.
 
  
- Exercise C.
+ Exercise C has started. 
+
+A function which makes singular value decompostion, to solve the linear and ordinary squares problem have been implemented. 
 We start by finding the singular value decomposition of A
 SVD has ended to find the following matrices:.
 Initial Matrix A=
@@ -110,7 +116,6 @@ We have using SV-decomposition found covariance matrix S =
    0.178	  0.0493	 -0.0528	
   0.0493	   0.248	 -0.0458	
  -0.0528	 -0.0458	  0.0208	
-The fit has been calculated, and the fitted line is depicted with the experimental data in the third figure.
+The ordinary least squares fit has been calculated, and the fitted line is depicted with the experimental data in the third figure.
 As seen in the plot the fit is accurate, just as in previous exercises. 
-  This concludes exercise C. 
-All of the relevant figures can be seen in the corresponding svg.files. 
+  This concludes exercise C and the exermination of least square fits. 

@@ -1,6 +1,27 @@
+Exercise A has started.
 
-Exercise 1 is solved with input from a cosine function, which integrated is the sine, the results can be found in the first plot
-Exercise 2 is solved, the coefficients are trivial for the three tested functions. 
-Exercise 2 results are for a const, lin. and quad. function shown in plot ex2.  
-Exercise 3 results are for a cosine function shown in plot ex3.  
-Here the homemade cspline is well reproduceb by the GSL function.  
+We have implemented a function, that makes the linear spline using binary search from a table at at given point z. Furthermore a function that calculates the integral of this linear spline has been made. As a test a linear interpolation and integration has been made from a dataset of a cosine funciton. 
+
+We start the calculation.
+The found linear spline and integral spline is shown in the corresponding figure.
+With a successfull demonstration of the spline and intragral function the first exercise is hereby done.
+
+
+Exercise B has started.
+
+We have implemented a function, that makes the quadratic spline using binary search from a table at at given point z. Furthermore a function that calculates the integral and the derivative of this quadratic spline has been made. As a test a quadratic interpolation, derivation and integration has been made from a dataset of a constant, linear and quadratic funciton. 
+
+We start the calculation.
+The found quadratic spline with derivative and integral is shown in the corresponding figure, and gives the expected trivial values for the three functions.
+With a successfull demonstration of the quadratic spline, derivative and intregral, the second exercise is hereby done.
+
+
+Exercise C has started.
+
+We have implemented a function, that makes the cubic spline using binary search from a table at at given point z. Furthermore a function that calculates the integral and the derivative of this cubic spline has been made. As a test a quadratic interpolation, derivation and integration has been made from a dataset of a cosine function, and a comparison is made with the GSL-library functions. 
+
+We start the calculation.
+The found cubic spline with derivative and integral is shown in the corresponding figure, and gives the expected sine-values for the integral and derivative. We also conclude that the cubic spline are well represented by the GSL-function.
+With a successfull demonstration of the cubic spline, derivative and intregral, the third exercise is hereby done.
+ This ends the examination on interpolation.
+

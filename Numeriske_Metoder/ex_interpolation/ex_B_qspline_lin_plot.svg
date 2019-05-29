@@ -1756,22 +1756,11 @@
 	</g>
 	<g id="gnuplot_plot_3" ><title>Q-test-lin</title>
 <g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="butt" stroke-linejoin="miter">
-	<g transform="translate(161.8,76.0)" stroke="none" fill="black" font-family="Arial" font-size="12.00"  text-anchor="end">
-		<text><tspan font-family="Arial" >Q-test-lin</tspan></text>
-	</g>
-</g>
-<g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="butt" stroke-linejoin="miter">
-	<use xlink:href='#gpPt6' transform='translate(133.8,427.6) scale(2.25)' color='rgb( 86, 180, 233)'/>
-	<use xlink:href='#gpPt6' transform='translate(222.1,411.2) scale(2.25)' color='rgb( 86, 180, 233)'/>
-	<use xlink:href='#gpPt6' transform='translate(310.3,394.9) scale(2.25)' color='rgb( 86, 180, 233)'/>
-	<use xlink:href='#gpPt6' transform='translate(398.5,378.5) scale(2.25)' color='rgb( 86, 180, 233)'/>
-	<use xlink:href='#gpPt6' transform='translate(486.8,362.1) scale(2.25)' color='rgb( 86, 180, 233)'/>
-	<use xlink:href='#gpPt6' transform='translate(191.2,72.1) scale(2.25)' color='rgb( 86, 180, 233)'/>
 </g>
 	</g>
 	<g id="gnuplot_plot_4" ><title>Q-integSpline</title>
 <g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="butt" stroke-linejoin="miter">
-	<g transform="translate(161.8,94.0)" stroke="none" fill="black" font-family="Arial" font-size="12.00"  text-anchor="end">
+	<g transform="translate(161.8,76.0)" stroke="none" fill="black" font-family="Arial" font-size="12.00"  text-anchor="end">
 		<text><tspan font-family="Arial" >Q-integSpline</tspan></text>
 	</g>
 </g>
@@ -2534,7 +2523,7 @@
 
 	<use xlink:href='#gpDot' x='485.8' y='248.3' color='rgb(230, 159,   0)'/>
 
-	<use xlink:href='#gpDot' x='191.2' y='90.1' color='rgb(230, 159,   0)'/>
+	<use xlink:href='#gpDot' x='191.2' y='72.1' color='rgb(230, 159,   0)'/>
 
 </g>
 	</g>

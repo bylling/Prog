@@ -1769,22 +1769,11 @@
 	</g>
 	<g id="gnuplot_plot_3" ><title>Q-test-quadratic</title>
 <g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="butt" stroke-linejoin="miter">
-	<g transform="translate(186.7,76.0)" stroke="none" fill="black" font-family="Arial" font-size="12.00"  text-anchor="end">
-		<text><tspan font-family="Arial" >Q-test-quadratic</tspan></text>
-	</g>
-</g>
-<g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="butt" stroke-linejoin="miter">
-	<use xlink:href='#gpPt6' transform='translate(133.8,430.3) scale(2.25)' color='rgb( 86, 180, 233)'/>
-	<use xlink:href='#gpPt6' transform='translate(222.1,389.0) scale(2.25)' color='rgb( 86, 180, 233)'/>
-	<use xlink:href='#gpPt6' transform='translate(310.3,320.4) scale(2.25)' color='rgb( 86, 180, 233)'/>
-	<use xlink:href='#gpPt6' transform='translate(398.5,224.2) scale(2.25)' color='rgb( 86, 180, 233)'/>
-	<use xlink:href='#gpPt6' transform='translate(486.8,100.5) scale(2.25)' color='rgb( 86, 180, 233)'/>
-	<use xlink:href='#gpPt6' transform='translate(216.1,72.1) scale(2.25)' color='rgb( 86, 180, 233)'/>
 </g>
 	</g>
 	<g id="gnuplot_plot_4" ><title>Q-integSpline</title>
 <g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="butt" stroke-linejoin="miter">
-	<g transform="translate(186.7,94.0)" stroke="none" fill="black" font-family="Arial" font-size="12.00"  text-anchor="end">
+	<g transform="translate(186.7,76.0)" stroke="none" fill="black" font-family="Arial" font-size="12.00"  text-anchor="end">
 		<text><tspan font-family="Arial" >Q-integSpline</tspan></text>
 	</g>
 </g>
@@ -2461,7 +2450,7 @@
 
 	<use xlink:href='#gpDot' x='445.9' y='20.3' color='rgb(230, 159,   0)'/>
 
-	<use xlink:href='#gpDot' x='216.1' y='90.1' color='rgb(230, 159,   0)'/>
+	<use xlink:href='#gpDot' x='216.1' y='72.1' color='rgb(230, 159,   0)'/>
 
 </g>
 	</g>

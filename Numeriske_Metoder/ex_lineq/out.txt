@@ -1,4 +1,8 @@
+
 Exercise A.1 is started
+
+An algorithm for QR-decomposition have been implemented, as well as a fucntion to sovle a linear system by Gram-Schmidt in-place-backsubstitution. Theese algorithms will now be tested.
+
 The random (from 0 to 10) initial matrix is:
 A=
      8.4	    3.94	    7.83	
@@ -26,7 +30,11 @@ Q*R=
     7.98	    9.12	    1.98	
     3.35	    7.68	    2.78	
     5.54	    4.77	    6.29	
+
+
+
 Exercise A.2 is started
+
 The random (from 0 to 10) initial matrix is:
 A=
     3.65	    5.13	    9.52	
@@ -58,7 +66,14 @@ The check A^T * x = b =
     1.37
     8.04
 
+With this succesfull demonstration of the QR-decomposition algorithm and corresponding Gram-Schmidt in-place backsubsitution algorithm for solving linear systems, the first exercise is hereby done. 
+
+
+
 Exercise B is started
+
+An algorithm using QR-decomposition and Gram-Schmidt for calculating a Matric inverse have been implemented, and will now be tested.
+
 The random (from 0 to 10) initial matrix is:
 A=
     1.57	    4.01	     1.3	
@@ -81,7 +96,14 @@ We check this by calculation of A*B=I=
        1	-1.55e-15	1.22e-15	
 -2.22e-16	       1	-2.78e-16	
 -2.22e-16	2.22e-15	       1	
+With this succesfull demonstration of the algorithm for finding matrix inverse by QR-decomposition and Gram-Schmidt, the second exercise is hereby done. 
+
+
+
 Exercise C is started
+
+An algorithm which uses Golub-Kahan-Lanczos bidiagonalization to be able to solve linear systems, find determinants and inverses are implemented, and will now be tested.
+
 The random (from 0 to 10) initial matrix is:
 A=
     2.96	    6.38	    5.24	    4.94	
@@ -137,4 +159,4 @@ We check this by calculation of A*B=I=
 -6.7e-10	       1	-8.44e-10	-3.62e-10	
  8.1e-10	6.71e-10	       1	4.38e-10	
 4.57e-10	3.78e-10	5.77e-10	       1	
-This concludes all three exercises.
+With a succesfull demonstration of finding the determinant, inverse and solution to a linear system all using Golub-Kahan-Lanczos bidiagonalization, this concludes the third exercise, and therby the examination of linear systems.

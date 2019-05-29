@@ -30,6 +30,7 @@ void qr_gs_decomp(gsl_matrix* A, gsl_matrix* R){
 
 
 void qr_gs_solve(gsl_matrix* Q, gsl_matrix* R, const gsl_vector* b, gsl_vector* x){
+// the function for solving the linear system
 // As described we first multiply Q^T with b
 gsl_blas_dgemv(CblasTrans,1.0,Q,b,0.0,x); // x = 1*Q^T*b + 0*x
 // As described we call the inplace backsubstitution on the R and product.
@@ -38,7 +39,7 @@ qr_gs_backsub(R,x);
 }
 
 void qr_gs_backsub(gsl_matrix* R, gsl_vector* x){
-
+// the function doing the inplace backsubstitution for R and solution X
 	int m = R->size1; //Number of rows in R
 // This is done as described in the lecture notes:
 for (int i = m-1; i >= 0; i--){ // We start from the last collumbn
@@ -51,37 +52,45 @@ for (int i = m-1; i >= 0; i--){ // We start from the last collumbn
 }
 
 void qr_gs_inverse(gsl_matrix* Q, gsl_matrix* R, gsl_matrix* B){
+  // We find the inverse function with the known QR-decomposition.
+  // we allocate the identity matrix
    gsl_matrix* I = gsl_matrix_alloc(Q->size1,Q->size2);
    gsl_matrix_set_identity(I);
+   // We solve the linear system for each of the collumn of the identity to allocate into the B matrix
    for (int i = 0; i < Q->size1; i++) {
        gsl_vector_view B_i = gsl_matrix_column(B, i);
        gsl_vector_const_view e_i = gsl_matrix_const_column(I, i);
        qr_gs_solve(Q, R, &(e_i.vector), &(B_i.vector));
    }
+// we free the parameters
       gsl_matrix_free(I);
   }
 
 void gkl_biadiag(gsl_matrix* U, gsl_matrix* A, gsl_matrix* V){
-  // The procedure is implemented excactly like in the link in the exercise
+  // The procedure of  Golub-Kahan-Lanczos bidiagonalization is implemented excactly like in the link in the exercise
+// We allocate the parameters and set a normal vector
 gsl_vector *V_1=gsl_vector_alloc(A->size2);
 gsl_vector *U_1=gsl_vector_alloc(A->size2);
-for (int i = 0; i < V_1->size; ++i) {
+for (int i = 0; i < V_1->size; ++i) { // (1)
         gsl_vector_set(V_1, i, 1);
 }
 double norm = 1/sqrt(V_1->size);
+// We scale the vector to norm = 1
 gsl_vector_scale(V_1,norm);
-double beta = 0.0;
+
+double beta = 0.0; // (1)
 double alpha;
-for (int k = 0; k < A->size2; k++) {
+for (int k = 0; k < A->size2; k++) { //(2)
   gsl_matrix_set_col(V,k,V_1);
-  gsl_blas_dgemv(CblasNoTrans,1.0,A,V_1,-beta,U_1); // u = 1*A*v - beta*u
-  alpha = gsl_blas_dnrm2(U_1);
-  gsl_vector_scale(U_1,1/alpha);
+  gsl_blas_dgemv(CblasNoTrans,1.0,A,V_1,-beta,U_1); // u = 1*A*v - beta*u (3
+  alpha = gsl_blas_dnrm2(U_1); //(4)
+  gsl_vector_scale(U_1,1/alpha); // (5)
   gsl_matrix_set_col(U,k,U_1);
-  gsl_blas_dgemv(CblasTrans,1.0,A,U_1,-alpha,V_1); // v = 1*A^T*u - alpha*b
-  beta = gsl_blas_dnrm2(V_1);
-  gsl_vector_scale(V_1,1/beta);
-}
+  gsl_blas_dgemv(CblasTrans,1.0,A,U_1,-alpha,V_1); // v = 1*A^T*u - alpha*b (6)
+  beta = gsl_blas_dnrm2(V_1); // (7)
+  gsl_vector_scale(V_1,1/beta); // (8)
+} //(9)
+// we free the parameters
 gsl_vector_free(V_1);
 gsl_vector_free(U_1);
     }
@@ -89,9 +98,11 @@ gsl_vector_free(U_1);
 void gkl_solve(gsl_matrix* U, gsl_matrix* A, gsl_matrix* V, const gsl_vector* s, gsl_vector* x){
   // At first we calculate B, and since solutions to Ax=S is the same as UBV^Tx=S
   // and since U and B are othhogonal it is B*x_mod=U^T S with x = V * xmod  we can easily by bachsubsisitution solve the equations
+// We allocate
 gsl_matrix *prod=gsl_matrix_alloc(4,4);
 gsl_matrix *B=gsl_matrix_alloc(4,4);
 gsl_vector *s_new=gsl_vector_alloc(4);
+
 gsl_blas_dgemm(CblasTrans,CblasNoTrans,1.0,U,A,0.0,prod); //prod =1 * U^T*A+0*prod
 gsl_blas_dgemm(CblasNoTrans,CblasNoTrans,1.0,prod,V,0.0,B); //B =1 * prod*V+0*B
 // We finc the U^T * S
@@ -99,7 +110,7 @@ gsl_blas_dgemv(CblasTrans,1.0,U,s,0.0,s_new); // s_new = 1*U^T*s - 0*s_enw
 
 glk_backsub(B,s_new);
 gsl_blas_dgemv(CblasNoTrans,1.0,V,s_new,0.0,x); //x = V * xmod + 0*x
-
+// We free
 gsl_matrix_free(prod);
 gsl_matrix_free(B);
 gsl_vector_free(s_new);
@@ -107,7 +118,7 @@ gsl_vector_free(s_new);
 
 
 void glk_backsub(gsl_matrix* R, gsl_vector* x){
-
+// The function doing the Golub-Kahan-Lanczos backsubstitution
 int m = R->size1; //Number of rows in R
 gsl_vector_set(x, m-1, (gsl_vector_get(x, m-1)-0)/gsl_matrix_get(R, m-1, m-1)); // We do the last row, since this is special and contains 1 value
 
@@ -133,14 +144,14 @@ double determ  = 1;
 for (int i = 0; i < B->size1; ++i) {
     determ = determ * gsl_matrix_get(B, i, i);
 }
-
+// We free
 gsl_matrix_free(prod);
 gsl_matrix_free(B);
 return determ;
 }
 
 void glk_inverse(gsl_matrix* U, gsl_matrix* A, gsl_matrix* V, gsl_matrix* B){
-// This inverse is found just as before
+// This inverse is found just as before for the QR algorithm
    gsl_matrix* I = gsl_matrix_alloc(A->size1,A->size2);
    gsl_matrix_set_identity(I);
    for (int i = 0; i < A->size1; i++) {
@@ -152,7 +163,7 @@ void glk_inverse(gsl_matrix* U, gsl_matrix* A, gsl_matrix* V, gsl_matrix* B){
   }
 
 
-void vector_print(const char* s, gsl_vector* v){
+void vector_print(const char* s, gsl_vector* v){ // The printing algoritm for vectors
     printf("%s\n",s);
     for(int i=0;i<v->size;i++){
       printf("%8.3g",gsl_vector_get(v,i));
@@ -161,7 +172,7 @@ void vector_print(const char* s, gsl_vector* v){
     printf("\n");
   }
 
-  void matrix_print(const char* s, gsl_matrix* A){
+  void matrix_print(const char* s, gsl_matrix* A){ // The Printing algorithm for matrices.
     printf("%s\n",s);
     for(int i=0;i<A->size1;i++){
       for(int j=0;j<A->size2;j++){

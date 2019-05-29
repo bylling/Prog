@@ -7,7 +7,8 @@
 
 
 int main(){
-fprintf(stdout, "Exercise A is started, a test with a n=4 matrix is shown:\n");
+fprintf(stdout, "\nExercise A is started.\n\n");
+fprintf(stdout, "An algorithm using Jacobi diagonalization by cyclic sweeps have been implemented and a test with a n=4 matrix is shown:\n");
 // We initialise the wanted parameters:
 int systemsize = 4;
 gsl_matrix *A=gsl_matrix_alloc(systemsize,systemsize);
@@ -53,14 +54,15 @@ gsl_blas_dgemm(CblasTrans,CblasNoTrans,1.0,V,Acopy,0.0,prod); // prod = 1 * V^T 
 gsl_blas_dgemm(CblasNoTrans,CblasNoTrans,1.0,prod,V,0.0,D); // prod = 1 * V^T * A + 0 * prod
 matrix_print("V^T * A * V =",D);
 // We free the parameters
-fprintf(stdout, "The calculation time for different matrix dimentsions using the cyclic jacobi method are plotted in the figure.\n");
-fprintf(stdout, "The graph clearly depicts the expected cubed dependency.\n");
+fprintf(stdout, "With a succesfull demonstration hereof, we examine the calculation time for different matrix dimentsions. The data from using the cyclic jacobi method are plotted in the corresponding figure.\n");
+fprintf(stdout, "The graph clearly depicts the expected cubed dependency. With this examination, the first exercise is done. \n");
 
 
 
 
 // Exercise B
-fprintf(stdout, "\n \n Exercise B is started, a test with the same matrix is shown, so the correct values can easily be checked with the calculations of exercise a:\n");
+fprintf(stdout, "\n \n Exercise B is started.\n\n");
+fprintf(stdout, "An Jacobi diagonalization method for recieving the eigenvalues one by one have been implemented. A test with the same matrix is shown, so the correct values can easily be checked with the calculations of exercise A:\n");
 // We call the modified jacobi_diagonalisation
 fprintf(stdout, "For test, we call the modified jacobi_diagonalisation and ask it to find first one eigenvalue:\n");
 int sweeps2;
@@ -68,8 +70,8 @@ sweeps2 = jacobi_mod_ev(Acopy,e2,V2,1);
 fprintf(stdout, "The modified Jacobi method ended in %d calculations\n",sweeps2);
 // We print the result
 fprintf(stdout, "The Jacobi-method returned\n");
-matrix_print("Eigenvectors V=",V2);
-vector_print("Eigenvalues e=",e2);
+matrix_print("Eigenvector V=",V2);
+vector_print("Eigenvalue e=",e2);
 fprintf(stdout, "The smallest eigenvalue have returned, since this is how the angle in the rotations for the itterations are defined, through the sign of the sinefunction, and the sign of the fraction, from wich the angle is found in the arctan2 funciton.\n");
 fprintf(stdout, "We now modify the jacobi diagonalization once again but to return the highest eigenvalue instead, by transposing the rotaion matrix, and finding the corresponding other solution to the angle phi that solves the rotation equations.\n");
 fprintf(stdout, "This is done by: .\n");
@@ -84,12 +86,14 @@ fprintf(stdout, "A comparison between the cyclic model and finding the eigenvalu
 
 fprintf(stdout, "From the figure, we see that it is slightly less fast to calculate the elements one by one, but if you would be able to start the next processes by getting the eigenvalues one by one, then there is time to safe by initialising the next part of a calculation with the eigenvalues one by one.\n However the first eigenvalue is still the most difficult to calculate, so there is still a significant wait before continuing the process.\n");
 
-fprintf(stdout, "However the function works and will produce the correct eigenvalues and vectors.\n");
+fprintf(stdout, "The function works properly and will produce the correct eigenvalues and vectors. With this conclusion, the second exercise is done.\n");
 
 
 
 // Exercise C
-fprintf(stdout, "\n \n Exercise C is started, a test with the same matrix is shown, so the correct values can easily be checked with the calculations of exercise a:\n");
+fprintf(stdout, "\n \n Exercise C is started.\n\n");
+fprintf(stdout, " The 'Classic' Jacobi eigenvalue method have been implemented, and a test with the same matrix is shown, so the correct values can easily be checked with the calculations of exercise A:\n");
+
 // We call the modified jacobi_diagonalisation
 fprintf(stdout, "For test, we call the classic jacobi_diagonalisation with optimised termination of the largest elements in each row\n");
 int sweepsC;
@@ -101,7 +105,7 @@ fprintf(stdout, "One shall remember that theese found sweeps is thoughout all of
 fprintf(stdout, "The Classical Jacobi-method returned\n");
 matrix_print("Eigenvectors V=",VC);
 vector_print("Eigenvalues e=",eC);
-fprintf(stdout, "The results and comparison between the cyclic and classical jacobi method is shown in third figure.  The function work as planned, and returns the correct eigenvectors and values. This concludes the exercise. \n");
+fprintf(stdout, "With this succesfull demonstration, we can observe that the number of rotations may increase, but since it uses way fewer operations per rotaion it decreases computing time and are more efficient. We can compare the computation time between the cyclic and classical jacobi method for different matrix dimensions, this is shown in the corresponding figure.  The function work as planned, and returns the correct eigenvectors and values. This concludes the last exercise and the examniation of eigenvalues. \n");
 
 // the parameters are freed
 gsl_matrix_free(A);

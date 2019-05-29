@@ -1,6 +1,6 @@
 CFLAGS = -Wall -std=gnu1x $$(gsl-config --cflags)
 LDLIBS = $$(gsl-config --libs)
-CC = clang
+CC = gcc
 
 
 .Phoney: default
@@ -10,7 +10,7 @@ default: out.txt Makefile
 out.txt:main
 	./main  1> out.txt  2> error.txt
 
-main: main.o lineqfunctions.o 
+main: main.o lineqfunctions.o
 
 clean:
 	$(RM) out* *.o main

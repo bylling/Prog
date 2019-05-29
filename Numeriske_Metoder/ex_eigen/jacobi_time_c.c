@@ -22,7 +22,7 @@ for (int i = 0; i < A->size1; ++i) {
 // We do now initialise the classical sweeping jacobi-method from the lecture notes, but modified with the propper indexing:
 int sweeps;
 sweeps = jacobi_versc(A,e,V);
-
+sweeps += 0;
 // We free the parameters
 gsl_matrix_free(A);
 gsl_matrix_free(V);

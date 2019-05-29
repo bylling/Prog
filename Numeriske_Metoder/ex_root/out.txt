@@ -1,4 +1,6 @@
+
 Exercise A has started
+
 The Newton's method for analytic Jacobian and back-tracking linesearch has been implemented.
 We test the implementation by at first solving the system of equations A*x*y = 1 , exp(-x) + exp(-y) = 1 + 1/A, with A= 10000 
 We use initial point at x0 = 
@@ -34,7 +36,10 @@ However since this function do not have the symmetry of the others, we cannot be
 This concludes the first exercise.  
  
  
+
+
 Exercise B has started
+
 The Newton's method for numerical calculation of the Jacobian and back-tracking linesearch has been implemented.
 We test the implementation, by comparing with the results of the previously done analytical calculations.
 For all of these, we use the same start-values and a stepsize of 0.001 
@@ -75,7 +80,10 @@ The root finding starts:
 To compare we find, that the GSL-multiroot functions is doing more steps than our functions, in order to find the correct value. However, the GSL functions are modified and optimized for the platfor. This gives the result that the functioncalls will be reduced, but sometimes make the stepnumber go higher instead. Therefore even thought it uses more steps, it might be way faster, and could be further optimized using a designated type instead of the gsl_multiroot_fsolver_hybrids 
 With a comparison to the GSL routines, and the implementation of the numerical solver for the Jacobian, exercise B is hereby concluded.
  
- Exercise C has started
+ 
+
+Exercise C has started
+
 A modified Newton's method for analytic Jacobian and back-tracking linesearch has been implemented using quadratic interpolation for the calculation of the lambda-parameter.
 The method is once again tested on all three model systems, to compare the number of function calls. 
 For all of these, we use the same start-values. 
@@ -100,4 +108,4 @@ Solution is supposed to be one of four local minima at f(3.0,2.0)=0.0,f(−2.805
    -3.28
 
 We hereby find, that once again for some cases, the quadratic method is way better. But since the stepper in the Rosenbrock function, with its starting step is very luckely choosen, so it reduces to a one dimentional problem in the linear case, then that problem is another story. This is done to demonstrate, that for special situations, one can have the simplest solvers, to be the best. But for most cases, the quadratic method drasticly reduces both functioncalls and steps. 
-This concludes exercise C.
+This concludes exercise C and the examination of rootfinding. 

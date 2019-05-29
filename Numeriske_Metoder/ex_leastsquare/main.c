@@ -15,15 +15,14 @@ int main(int argc, char** argv){
 
 // Exercise A
 // data load
-fprintf(stdout, "Exercise A has started\n" );
+fprintf(stdout, "\nExercise A has started\n\n" );
+fprintf(stdout, "An algoritm for making an ordinary least-squares-fit with uncertainties using QR decomposition have been implemented, and will now be tested on the given datapoints.\n" );
 int n=atoi(argv[1]);
 double xdata[n],ydata[n],dydata[n];
  for(int i=0;i<n;i++){
   scanf("%lg %lg %lg",xdata+i,ydata+i,dydata+i);}
 
-
 // Load data into vectors
-
 gsl_vector* vec_xdata = gsl_vector_alloc(n);
 gsl_vector* vec_ydata = gsl_vector_alloc(n);
 gsl_vector* vec_dydata = gsl_vector_alloc(n);
@@ -64,19 +63,19 @@ for(double i = x_min; i < x_max; i += stepx) {
 }
 
 fprintf(stdout, "The fitted line has been calculated, and the fitted line is depicted with the experimental data in the first figure.\n" );
-fprintf(stdout, "As seen in the plot the fit is accurate. This concludes exercise A. \n" );
+fprintf(stdout, "As seen in the plot the fit is accurate. This demonstration concludes exercise A. \n" );
 
 
 // Exercise B
 
-fprintf(stdout, "\n \n Exercise B.\n" );
-fprintf(stdout, "The used function for exercise A, is made based on script from the lecture notes, therefore it can be reused.\n" );
+fprintf(stdout, "\n \n Exercise B has started.\n\n" );
+fprintf(stdout, "We reuse the function for exercise A, since here the requested covariance matrix is already found.\n" );
 // We reuse the data from exercise A, since that function is already made complete.
 // However this time we find the correlations from the covariance matrix. By adding or subtracting this contribution we find the errors of our fit.
 // This is done now
 
-fprintf(stdout, "We calculate the new fit, based on the covariance matrix.\n" );
-matrix_print("The covariance matrix becomes: ",S);
+fprintf(stdout, "We calculate the new fits, based on the covariance matrix.\n" );
+matrix_print("The covariance matrix are: ",S);
 
 
 // We know write the data into file data2.txt, this is done from the first to the last element in 1000 steps
@@ -100,11 +99,11 @@ for(double i = x_min; i < x_max; i += stepx) {
 
 fprintf(stdout, "The calculations have ended and the fitted functions is plotted with the experimental data on the second figure.\n" );
 fprintf(stdout, "As seen from the plot, the fit and the corresponding error to the fit is accurate to describe the experimental datapoints.\n" );
-fprintf(stdout, "This concludes exercise B.\n");
+fprintf(stdout, "This examination concludes exercise B.\n");
 
 // Exercise C.
-fprintf(stdout, "\n \n Exercise C.\n" );
-
+fprintf(stdout, "\n \n Exercise C has started. \n\n" );
+fprintf(stdout, "A function which makes singular value decompostion, to solve the linear and ordinary squares problem have been implemented. \n" );
 // First we allocate all of the needed variables for the SVD, and the tests hereoff:
 
 gsl_matrix *A    = gsl_matrix_alloc(n,freeparams);
@@ -117,7 +116,6 @@ gsl_matrix *Atest    = gsl_matrix_alloc(n,freeparams);
 
 
 // We insert the wanted valies in A
-
 for(int i=0;i<n;i++){
 	double xi  = gsl_vector_get(vec_xdata ,i);
 	double dyi = gsl_vector_get(vec_dydata,i);
@@ -158,7 +156,6 @@ gsl_vector *VectorX=gsl_vector_alloc(3);
 gsl_vector *VectorBtest=gsl_vector_alloc(3);
 
 //Now we insert random numbers from 0 to 10 in the matrix and vector:
-
 for (int i = 0; i < MatrixA->size1; ++i) {
     for (int j = 0; j < MatrixA->size2; ++j) {
         gsl_matrix_set(MatrixA, i, j, ((double) rand())/((double)RAND_MAX)*10);
@@ -220,11 +217,8 @@ for(double i = x_min; i < x_max; i += stepx) {
     fprintf(file3, "%g %g %g\n", i, f, sqrt(df));
 }
 
-fprintf(stdout, "The fit has been calculated, and the fitted line is depicted with the experimental data in the third figure.\n" );
-fprintf(stdout, "As seen in the plot the fit is accurate, just as in previous exercises. \n  This concludes exercise C. \n" );
-fprintf(stdout, "All of the relevant figures can be seen in the corresponding svg.files. \n" );
-
-
+fprintf(stdout, "The ordinary least squares fit has been calculated, and the fitted line is depicted with the experimental data in the third figure.\n" );
+fprintf(stdout, "As seen in the plot the fit is accurate, just as in previous exercises. \n  This concludes exercise C and the exermination of least square fits. \n" );
 
 // We free all of the parameters
 
@@ -235,8 +229,6 @@ gsl_vector_free(c);
 gsl_matrix_free(S);
 gsl_vector_free(cSV);
 gsl_matrix_free(SSV);
-
-
 gsl_matrix_free(A);
 gsl_matrix_free(V);
 gsl_matrix_free(D);
@@ -244,14 +236,12 @@ gsl_matrix_free(U);
 gsl_matrix_free(S2);
 gsl_matrix_free(prod);
 gsl_matrix_free(Atest);
-
 gsl_matrix_free(MatrixA);
 gsl_matrix_free(MatrixAcopy);
 gsl_matrix_free(MatrixV);
 gsl_matrix_free(MatrixD);
 gsl_matrix_free(MatrixU);
 gsl_matrix_free(MatrixS2);
-
 gsl_vector_free(VectorB);
 gsl_vector_free(VectorX);
 gsl_vector_free(VectorBtest);

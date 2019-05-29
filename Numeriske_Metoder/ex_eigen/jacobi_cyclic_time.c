@@ -22,7 +22,7 @@ for (int i = 0; i < A->size1; ++i) {
 // We do now initialise the cyclic sweeping jacobi-method from the lecture notes:
 int sweeps;
 sweeps = jacobi(A,e,V);
-
+sweeps += 0;
 // We free the parameters
 gsl_matrix_free(A);
 gsl_matrix_free(V);

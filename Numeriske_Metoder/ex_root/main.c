@@ -11,7 +11,7 @@
 int main(int argc, char** argv){
 
 // Exercise A
-fprintf(stdout, "Exercise A has started\n" );
+fprintf(stdout, "\nExercise A has started\n\n" );
 // A.1
 fprintf(stdout, "The Newton's method for analytic Jacobian and back-tracking linesearch has been implemented.\n" );
 fprintf(stdout, "We test the implementation by at first solving the system of equations A*x*y = 1 , exp(-x) + exp(-y) = 1 + 1/A, with A= 10000 \n" );
@@ -71,7 +71,7 @@ fprintf(stdout, "However since this function do not have the symmetry of the oth
 fprintf(stdout, "This concludes the first exercise.  \n \n \n" );
 
 // Exercise B
-fprintf(stdout, "Exercise B has started\n" );
+fprintf(stdout, "\n\nExercise B has started\n\n" );
 
 fprintf(stdout, "The Newton's method for numerical calculation of the Jacobian and back-tracking linesearch has been implemented.\n" );
 fprintf(stdout, "We test the implementation, by comparing with the results of the previously done analytical calculations.\n" );
@@ -142,7 +142,7 @@ fprintf(stdout,"With a comparison to the GSL routines, and the implementation of
 
 
 // Exercise C
-fprintf(stdout, "Exercise C has started\n" );
+fprintf(stdout, "\n\nExercise C has started\n\n" );
 
 fprintf(stdout, "A modified Newton's method for analytic Jacobian and back-tracking linesearch has been implemented using quadratic interpolation for the calculation of the lambda-parameter.\n" );
 fprintf(stdout, "The method is once again tested on all three model systems, to compare the number of function calls. \n" );
@@ -180,7 +180,7 @@ int stephimmel3 = newton_with_jacobian_quad_int(&function_himmel_with_j, x_himme
 fprintf(stdout,"The Quadratic method used %i steps and %g functioncalls.  \nCompared to the analytical of %i steps and %g functioncalls. \n",stephimmel3,gsl_vector_get(functioncall,2),stephimmel1,oldfunctioncall3);
 vector_print("Solution is supposed to be one of four local minima at f(3.0,2.0)=0.0,f(−2.805118,3.131312)= 0.0, f(−3.779310,−3.283186)=0.0 or f(3.584428,-1.848126)=0.0, and found to be x = ",x_himmel3);
 fprintf(stdout,"We hereby find, that once again for some cases, the quadratic method is way better. But since the stepper in the Rosenbrock function, with its starting step is very luckely choosen, so it reduces to a one dimentional problem in the linear case, then that problem is another story. This is done to demonstrate, that for special situations, one can have the simplest solvers, to be the best. But for most cases, the quadratic method drasticly reduces both functioncalls and steps. \n");
-fprintf(stdout, "This concludes exercise C.\n");
+fprintf(stdout, "This concludes exercise C and the examination of rootfinding. \n");
 
 // We free the parameters
 

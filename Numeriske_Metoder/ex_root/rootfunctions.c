@@ -261,6 +261,7 @@ return GSL_SUCCESS;
 
 
 int gslroot_lin(double * z,double * z2){
+  // The GSL Root functions for the linear equations
   double EPS = 1e-6; // We use the same epsilon as before.
 	gsl_multiroot_function F;
 	F.f=gsl_root_equation_lin;
@@ -299,6 +300,7 @@ int gslroot_lin(double * z,double * z2){
 
 
 int gslroot_rosen(double * z,double * z2){
+  // The GSL Root functions for the Rosenbrock equation
   double EPS = 1e-6; // We use the same epsilon as before.
 	gsl_multiroot_function F;
 	F.f=gsl_root_equation_rosen;
@@ -336,6 +338,7 @@ int gslroot_rosen(double * z,double * z2){
 }
 
 int gslroot_himmel(double * z,double * z2){
+  // The GSL Root functions for the Himmelblau equation
   double EPS = 1e-6; // We use the same epsilon as before.
 	gsl_multiroot_function F;
 	F.f=gsl_root_equation_himmel;

@@ -17,7 +17,8 @@ double funs(int i, double x){ // The functions are stated as in the exercise des
    }
 }
 
-void lsfitA(double funs(int i, double x),int freeparams,gsl_vector* vec_xdata, gsl_vector* vec_ydata, gsl_vector* vec_dydata, gsl_vector* c, gsl_matrix* S ){ // The least_fit function for exercise A. This is done corresponding to the  python script from the lecture notes.
+void lsfitA(double funs(int i, double x),int freeparams,gsl_vector* vec_xdata, gsl_vector* vec_ydata, gsl_vector* vec_dydata, gsl_vector* c, gsl_matrix* S ){
+  // The least_fit function for exercise A. This is done corresponding to the  python script from the lecture notes.
 int n = vec_xdata->size; // The number of datapoints are found.
 int m = freeparams; // The number of free parameters in the functions are collected and denoted as required
 
@@ -118,7 +119,7 @@ gsl_vector_free(e);
 
 
 void linsysSVD(gsl_matrix* MatrixA,  gsl_matrix* MatrixV,  gsl_matrix* MatrixD,  gsl_matrix* MatrixU,  gsl_matrix* MatrixS2, gsl_vector* VectorB, gsl_vector* VectorX){
-
+// The function to do both the SV-decomp and the solving of the linear system
 // First we allocate the needed parameters
 gsl_vector *y = gsl_vector_alloc(MatrixA->size2);
 gsl_vector *prod = gsl_vector_alloc(MatrixA->size2);
