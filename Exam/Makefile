@@ -1,0 +1,34 @@
+CFLAGS = -Wall -std=gnu1x $$(gsl-config --cflags)
+LDLIBS = $$(gsl-config --libs)
+CC = gcc
+
+default: out.txt report.pdf Makefile
+	cat $<
+
+report.pdf: report.tex plot-cairo.tex plot-cairo_time.tex
+	pdflatex $<
+	pdflatex $<
+
+time_main.txt:timemain
+	n=100; $(RM) $@; \
+        while [ $${n} -le 500 ] ; do \
+        	\time --format "%U" --append --output $@ ./$< $$n > /dev/null; \
+        	n=`expr $$n + 100`; \
+        done;
+
+
+plot-cairo.tex: plot1.gpi plot1.data
+	sed -e 's/TERM/cairolatex pdf/' -e 's/OUT/$@/' < $< | gnuplot
+
+plot-cairo_time.tex: plot_time.gpi time_main.txt
+	sed -e 's/TERM/cairolatex pdf/' -e 's/OUT/$@/' < $< | gnuplot
+
+out.txt plot1.data: main
+	./main 1> out.txt  2> error.txt
+
+timemain: timemain.o functionfile.o
+
+main:main.o functionfile.o
+
+clean:
+	$(RM) *.o out* *.svg main plot.data *.pdf *.log *.aux *.data error.txt plot-cairo.tex plot-cairo_time.tex time_main.txt timemain

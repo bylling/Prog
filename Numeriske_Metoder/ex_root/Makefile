@@ -1,4 +1,4 @@
-CFLAGS = -Wall -std=gnu1x $$(gsl-config --cflags)
+CFLAGS = -Wall -o -std=gnu1x $$(gsl-config --cflags)
 LDLIBS = $$(gsl-config --libs)
 CC = clang
 

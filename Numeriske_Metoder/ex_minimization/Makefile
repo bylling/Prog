@@ -1,6 +1,6 @@
 CFLAGS = -Wall -std=gnu1x $$(gsl-config --cflags)
 LDLIBS = $$(gsl-config --libs)
-CC = clang
+CC = gcc
 
 .Phoney: default
 default:	out.txt Makefile ex_B_plot.svg
