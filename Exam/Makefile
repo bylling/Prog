@@ -26,9 +26,9 @@ plot-cairo_time.tex: plot_time.gpi time_main.txt
 out.txt plot1.data: main
 	./main 1> out.txt  2> error.txt
 
-timemain: timemain.o functionfile.o
+timemain: timemain.o functionfile.o function_lineq.o function_eigenval.o
 
-main:main.o functionfile.o
+main:main.o functionfile.o function_lineq.o function_eigenval.o
 
 clean:
 	$(RM) *.o out* *.svg main plot.data *.pdf *.log *.aux *.data error.txt plot-cairo.tex plot-cairo_time.tex time_main.txt timemain
