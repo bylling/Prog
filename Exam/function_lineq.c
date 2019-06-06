@@ -73,7 +73,7 @@ for (int i = m-2; i >= 0; i--){ // We start from the second last collumn
 }
 
 void glk_inverse(gsl_matrix* U, gsl_matrix* A, gsl_matrix* V, gsl_matrix* B){
-// This inverse is found just as before for the QR algorithm
+// This inverse is found just as before for the QR algorithm in the Lin eq. exercise
    gsl_matrix* I = gsl_matrix_alloc(A->size1,A->size2);
    gsl_matrix_set_identity(I);
    for (int i = 0; i < A->size1; i++) {

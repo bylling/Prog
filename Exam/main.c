@@ -28,10 +28,12 @@ gsl_matrix* V_classic = gsl_matrix_alloc(n,n);
 gsl_vector* V_power = gsl_vector_alloc(n);
 gsl_vector* V_inv_power = gsl_vector_alloc(n);
 gsl_vector* V_shift_inv = gsl_vector_alloc(n);
+gsl_vector* V_inv = gsl_vector_alloc(n);
 gsl_vector* e_classic = gsl_vector_alloc(n);
 gsl_vector* e_power = gsl_vector_alloc(n);
 gsl_vector* e_inv_power = gsl_vector_alloc(n);
 gsl_vector* e_shift_inv = gsl_vector_alloc(n);
+gsl_vector* e_inv = gsl_vector_alloc(n);
 // We fill the matrix with random real numbers
 double randomnumber;
 for (int i = 0; i < A->size1; ++i) {
@@ -107,26 +109,20 @@ fprintf(stdout, "We see that the shifted inverse iteration method can reproduce 
 fprintf(stdout, "\n\n ------------- Final implementation: Inverse Iteration Method -----------------\n" );
 fprintf(stdout, "Finally the inverse iteration method has been made. This do not rely on the Golub-Kahan-Lanczos bidiagonalization for finding the inverse, but instead the more simple QR-decomposition to solve a linear system using backsubstitution instead of finding the inverse. This procedure will if we do not update the estimated eigenvalue cost O(n²) operations per iteration, but with a reestimation of the shift for every iteration the cost will be O(n³). Therefore the implementation has been made, so the user will be able to ask for the desired iterations per update of the estimated eigenvalue. \n");
 
-fprintf(stdout, "To directly see the efficiency of the inverse iteration method, we update the estimated eigenvalue at every iteration in the following test.\n");
+fprintf(stdout, "To directly see the efficiency of the inverse iteration method, we do not update the estimate of the eigenvalue in the following test, for direct comparison.\n");
 
+int iter_inv = 0;
+s = -5;
+int update = 3;
+iter_inv = inverse_iteration(A, e_inv, V_inv,s,update);
+fprintf(stdout, "The inverse iteration around s = %g ended in %i iterations, with an update every %i'th iteration'.\n",s,iter_inv,update);
+fprintf(stdout, "The inverse iteration method around s = %g returned \n",s);
+vector_print("Closest Eigenvector V=",V_inv);
+vector_print("Closest Eigenvalue e=",e_inv);
 
-
-
-
-// We initialize our values
-double x_plot, x_step = 1., y_plot, y_theory;
-
-// We print the values
-FILE* file = fopen("plot1.data", "w");
-for (int i = 0; i < 10.; i++) {
-  // We make the x-values
-  x_plot = i*x_step;
-  // We make the y-values.
-  y_plot = x_plot * x_plot;
-  y_theory = x_plot * x_plot;
-  fprintf(file, "%g %g %g\n",x_plot,y_plot,y_theory);
-}
-
+fprintf(stdout, "Two different implementations of the inverse iteration algorithm has hereby been made to find to nearest eigenvalue and eigenvector. They are both demonstrated, and are relying on finding the inverse through olub-Kahan-Lanczos bidiagonalization, and solving a linear system using QR-factorisation with backsubstitution respectively.\n");
+fprintf(stdout, "A in-depth examination of the procedure are made in the corresponding report.pdf where additional information can be found.\n");
+fprintf(stdout, "The quick demonstration is hereby done.\n");
 
 // We free the parameters
 gsl_matrix_free(A);
@@ -137,11 +133,13 @@ gsl_matrix_free(V_classic);
 gsl_vector_free(V_power);
 gsl_vector_free(V_inv_power);
 gsl_vector_free(V_shift_inv);
+gsl_vector_free(V_inv);
 gsl_vector_free(e_classic);
 gsl_vector_free(e_power);
 gsl_vector_free(e_inv_power);
 gsl_vector_free(e_shift_inv);
-fclose(file);
+gsl_vector_free(e_inv);
+
 
 return 0;
 }

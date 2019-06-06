@@ -1,10 +1,12 @@
 set term TERM
 set out 'OUT'
-set xlabel 'x'
-set ylabel 'y'
+set xlabel 'Matrix Dimension [n]'
+set ylabel 'Number of iterations'
 set tics out
 set size 0.6,0.6
 set key left top
 plot \
- "plot1.data" using 1:2 with points title "Calculated" \
-,"plot1.data" using 1:3 with lines title "Theoretical" \
+ "plot1.data" using 1:2 with lines title "Power Iteration" \
+,"plot1.data" using 1:3 with lines title "Inverse Power Iteration" \
+,"plot1.data" using 1:4 with lines title "Shifted Inverse Iteration" \
+,"plot1.data" using 1:5 with lines title "Inverse Iteration" \
