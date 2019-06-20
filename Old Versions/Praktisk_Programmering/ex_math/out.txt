@@ -1,0 +1,12 @@
+Part I
+Gamma of five = 24 + 0 i
+Bessel first of a half = 0.242268 + 0 i
+Squareroot of minus two = 0 + 1.41421 I
+Exponential of i = 0.540302 + I * 0.841471
+Exponential of i pi = -1 + I * 1.22465e-16
+I to the power of e = -0.42822 + I * -0.903675
+
+Part II
+Significant digits for float 0.1111111119389533996582031
+Significant digits for double 0.1111111111111111049432054
+Significant digits for long double 0.1111111111111111111096053

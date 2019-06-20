@@ -1,0 +1,48 @@
+Part I i.
+Maximal integer defined by the system 2147483647
+My max integer with while = 2147483647
+My max integer with for = 2147483647
+My max integer with do while = 2147483647
+All of these values are the same as expected
+
+Part I ii
+Minimal integer defined by the system -2147483648
+My min integer with while = -2147483648
+My min integer with for = -2147483648
+My min integer with do while = -2147483648
+All of these values are the same as expected
+
+Part I iii
+The mashine epsilon for a floating is = 1.19209e-07
+My found mashine epsilon for a float using while is = 1.19209e-07
+My found mashine epsilon for a float using for is = 1.19209e-07
+My found mashine epsilon for a float using do-while is = 1.19209e-07
+
+The mashine epsilon for a double is = 2.22045e-16
+My found mashine epsilon for a double is = 2.22045e-16
+My found mashine epsilon for a double using for is = 2.22045e-16
+My found mashine epsilon for a double using do-while is = 2.22045e-16
+
+The mashine epsilon for a long double is = 1.0842e-19
+My found mashine epsilon for a long double is = 1.0842e-19
+My found mashine epsilon for a long double using for is = 1.0842e-19
+My found mashine epsilon for a long double using do-while is = 1.0842e-19
+
+All of these values are found to be the expected.
+
+The sum will run to the term numver of 715827882
+The sum up float will hereby give = 15.4037
+The sum down float will hereby give = 18.8079
+The difference is due to the fact that the downwards sum will add small terms first, and after a long time be neglected 
+In the upwards sum we will start with high sums and more quickly neglect the small terms
+
+The sum of the reciprocal natural numbers to the maximal integer will converge, but not the sum to infinity which diverges. 
+
+The sum up double will hereby give = 20.9662
+The sum down double will hereby give = 20.9662
+The sum now does not go to small enough terms to compare with the accuracy of the double 
+
+We check if the function works by three tests one for tau, one for epsilon and one for negative
+The first test which should give a 1 is 1
+The second test which should give a 1 is 1
+The third test which should give a 0 is 0

@@ -1,0 +1,6 @@
+set term svg background 'white'
+set xlabel "Time"
+set ylabel "Signal"
+plot  \
+	  'plot.txt' using 1:2:3 with errorbars title 'dezay data'\
+  , 'plot.txt' using 1:4 with lines smooth acsplines title 'fit'\

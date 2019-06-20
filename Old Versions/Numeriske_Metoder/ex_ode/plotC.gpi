@@ -1,0 +1,5 @@
+set terminal svg background 'white'; \
+set xlabel 'x';\
+set ylabel 'f(x)';\
+plot 'plotdata3.txt' using 1:3 with lines title 'x^-x', \
+   'plotdata3.txt' using 1:2 with lines title 'integral of x^-x', \

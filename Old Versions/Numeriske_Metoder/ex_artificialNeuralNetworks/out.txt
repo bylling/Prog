@@ -1,0 +1,46 @@
+Exercise A has started
+
+A simple artificial neural network have been implemented.
+
+For all of the following calculations we use a gaussian activation-function.
+As a test, we want to approximate a rectangular function with the value 1 between 0 and 1, and 0 everywhere else. 
+We do the training and calculation for a network consisting of 2 and 7 neurons. For them both, we use the same inital guess and the same number of trainingpoints. 
+
+We start the training of the neural networks, using 500 trainingpoints.
+
+We training has ended.
+
+A comparison between the two neural networks with their common guess-values are shown in the corresponding figure.
+We see the fact that the neural network with 7 hidden neurons works better at approximating the step-function, than the neural network with 2 hidden neurons. This is due to the fact that we can make an approximate stepfunction on a basis of gaussian functions, which gets better and better the more gaussians we include in the function.
+With the demonstration of the implementation of a simple artificial neural network with corresponding traning-procedure, the first exercise is hereby done.
+
+
+Exercise B has started
+
+A derivative and antiderivative feed-forward function has been implemented, and will now be tested on the stepfunction as before. The functions have been implemented such, that the user would have to define the analytical deriavtive and antiderivative of the activationfunction, which in this case is the gaussian derivative and indefinite integration. However this do not change the fact, that based on the proper training of the neural network, we will be able to approximate any function, derivative and antiderivative on a gaussian basis. The error must then be considered with respect to how good the gaussian basis is in the specific case, based on knowledge of the specific function.
+
+We calculate the deriavtive and the antiderivative using the 7 Hidden neurons and 500 Training points.
+
+The calculation as ended.
+
+The analytical stepfunction, stepfunction made with the neural network, derivative and antiderivate of the stepfunction found by the neural network is plotted in the corresponding figure. 
+We find, that the derivate, which should be two delta-function are poorly described in the gaussian basis, however we see, that the sign changes as expected. 
+ We furthermore see that the anti-derivative is not represented in a good way either. As expected the function increases during the square function, but the wigles at the border of the gausian fit, makes the antiderivate return to a value of 0 instead of increasing to 1, as should be the case for the square function. Theese indescreptancies are hereby not due to the implementation of the artificial neural network, but based on the gausian basis used as the activation function.
+
+With the demonstration of the implementation of a derivative and antiderivative approximation using the trained artificial neural network, the second exercise is hereby done.
+
+
+Exercise C has started
+
+A new traning algorithm have been implemented to train for the solving a differential equation using a given boundary condition.
+
+We start the training of the neural networks, with the same initial function as in exercise A.
+
+We training has ended.
+
+The finite well potential and a solution to such with constant energy is made with the neural network and is plotted in the corresponding figure. 
+We find that the gaussian basis seems to fulfill the boundary conditions at c = 1/2, with y' = 0. The gaussian basis is resonable to express the bound harmonic state in the well potential. The constants are not scaled, making the axis have arbitrary values, since this is only a simple demonstration.
+With the proper values inserted, one would however be able to solve any differential equation using this method.
+With the demonstration of the implementation of a differential equation solver using a specially trained artificial neural network, the third exercise is hereby done.
+
+

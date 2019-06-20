@@ -1,0 +1,6 @@
+set terminal svg background 'white'; \
+plot [-0.2:10.5][-16.5:5]  \
+  'initial.data' using 1:2:3 with yerrorbars title 'y(x)' \
+, 'data3.txt' using 1:2 with lines title 'Fit using SV-decomp' \
+, 'data3.txt' using 1:($2 + $3) with lines title 'Fit plus std.error' \
+, 'data3.txt' using 1:($2 - $3) with lines title 'Fit minus std.error' \

@@ -1,0 +1,6 @@
+set terminal svg background 'white'; \
+set xlabel "x arb. units";\
+set ylabel "f(x) arb. units.";\
+plot   \
+  'plotdata3.txt' using 1:2 pt 7 ps 0.5 title 'Neural Network Solution to ODE', \
+  'plotdata3.txt' using 1:3 with lines title 'ODE potential'\

@@ -1,0 +1,9 @@
+set term svg background 'white'
+set ytics 0.25  # y scale marks and values will be at every 10th unit
+set grid      # grid turned on at each scale values
+set xlabel "x"
+set ylabel "y"
+set key left top
+plot [][-0.5:1.0]\
+	 'airy.txt' using 1:2 with lines title 'Ai(x)' linecolor rgb "red"\
+	,'airy.txt' using 1:3 with lines title 'Bi(x)' linetype "dashed" linecolor rgb "blue"\

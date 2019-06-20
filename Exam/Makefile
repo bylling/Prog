@@ -53,4 +53,4 @@ figure2code:figure2code.o functionfile.o function_lineq.o function_eigenval.o
 
 
 clean:
-	$(RM) *.o out* *.svg main plot.data *.pdf *.log *.aux *.data error.txt plot-cairo.tex plot-cairo_time.tex time_main.txt timemain
+	$(RM) *.o out* *.svg main *.pdf *.log *.aux *.data error.txt plot-cairo.tex plot-cairo_time.tex plot-cairo-2.tex timejacobi.txt timemain figure1code figure2code timejacobi timeinverse_iter timeinverse_iter.txt

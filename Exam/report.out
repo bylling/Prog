@@ -1,7 +1,12 @@
 \BOOKMARK [1][-]{section.1}{Implementation and Theory}{}% 1
 \BOOKMARK [2][-]{subsection.1.1}{The Power Method}{section.1}% 2
-\BOOKMARK [2][-]{subsection.1.2}{The Inverse Power method}{section.1}% 3
-\BOOKMARK [3][-]{subsubsection.1.2.1}{ Golub Kahan Lanczos bidiagonalization}{subsection.1.2}% 4
+\BOOKMARK [2][-]{subsection.1.2}{The Inverse Power Method}{section.1}% 3
+\BOOKMARK [3][-]{subsubsection.1.2.1}{Golub Kahan Lanczos Bidiagonalization}{subsection.1.2}% 4
 \BOOKMARK [2][-]{subsection.1.3}{ Shifted Inverse Iteration}{section.1}% 5
-\BOOKMARK [2][-]{subsection.1.4}{Inverse Iteration Method}{section.1}% 6
+\BOOKMARK [2][-]{subsection.1.4}{ Inverse Iteration Method}{section.1}% 6
 \BOOKMARK [3][-]{subsubsection.1.4.1}{QR-Decomposition by modified Gram-Schmidt orthogonalization}{subsection.1.4}% 7
+\BOOKMARK [1][-]{section.2}{Comparison and Results}{}% 8
+\BOOKMARK [2][-]{subsection.2.1}{Power Iteration Methods}{section.2}% 9
+\BOOKMARK [2][-]{subsection.2.2}{ Inverse Iteration with Update}{section.2}% 10
+\BOOKMARK [2][-]{subsection.2.3}{Comparison with Jacobi Method}{section.2}% 11
+\BOOKMARK [1][-]{section.3}{ Conclusion}{}% 12

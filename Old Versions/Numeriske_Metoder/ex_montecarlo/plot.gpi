@@ -1,0 +1,5 @@
+set terminal svg background 'white'; \
+set xlabel "Number of points as 1/sqrt(N)";\
+set ylabel "Absolute estimated error";\
+plot   \
+  'plotdata1.txt' using (1/sqrt($1)):($2) pt 7 ps 0.5 title 'Sweep' \

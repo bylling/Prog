@@ -1,0 +1,91 @@
+
+Exercise A is started.
+
+An algorithm using Jacobi diagonalization by cyclic sweeps have been implemented and a test with a n=4 matrix is shown:
+The random (from 0 to 10) initial symmetric matrix is:
+A=
+     8.4	    3.94	    7.83	    7.98	
+    3.94	    9.12	    1.98	    3.35	
+    7.83	    1.98	    7.68	    2.78	
+    7.98	    3.35	    2.78	    5.54	
+The Cyclic Jacobi method ended in 5 sweeps
+The Jacobi-method returned
+ Eigenvectors V=
+   0.715	  -0.182	   0.208	   0.642	
+-0.00938	   0.303	  -0.874	    0.38	
+  -0.395	   0.648	   0.439	   0.481	
+  -0.577	  -0.674	 -0.0275	    0.46	
+Eigenvalues e=
+   -2.41
+    3.52
+    7.29
+    22.3
+
+The check the method by calculation of V^T * A * V, which should be a matrix D with all eigenvalues on the diagonal.
+V^T * A * V =
+   -2.41	-1.27e-10	1.49e-15	3.33e-16	
+-1.27e-10	    3.52	-1.39e-15	-7.35e-09	
+1.62e-15	-1.83e-15	    7.29	3.41e-11	
+8.88e-16	-7.35e-09	3.41e-11	    22.3	
+With a succesfull demonstration hereof, we examine the calculation time for different matrix dimentsions. The data from using the cyclic jacobi method are plotted in the corresponding figure.
+The graph clearly depicts the expected cubed dependency. With this examination, the first exercise is done. 
+
+ 
+ Exercise B is started.
+
+An Jacobi diagonalization method for recieving the eigenvalues one by one have been implemented. A test with the same matrix is shown, so the correct values can easily be checked with the calculations of exercise A:
+For test, we call the modified jacobi_diagonalisation and ask it to find first one eigenvalue:
+The modified Jacobi method ended in 15 calculations
+The Jacobi-method returned
+Eigenvector V=
+   0.715	       0	       0	       0	
+-0.00938	       0	       0	       0	
+  -0.395	       0	       0	       0	
+  -0.577	       0	       0	       0	
+Eigenvalue e=
+   -2.41
+       0
+       0
+       0
+
+The smallest eigenvalue have returned, since this is how the angle in the rotations for the itterations are defined, through the sign of the sinefunction, and the sign of the fraction, from wich the angle is found in the arctan2 funciton.
+We now modify the jacobi diagonalization once again but to return the highest eigenvalue instead, by transposing the rotaion matrix, and finding the corresponding other solution to the angle phi that solves the rotation equations.
+This is done by: .
+The modified Jacobi method ended in 8 sweeps
+The Jacobi-method returned
+Eigenvectors V=
+   0.642	       0	       0	       0	
+    0.38	       0	       0	       0	
+   0.481	       0	       0	       0	
+    0.46	       0	       0	       0	
+Eigenvalues e=
+    22.3
+       0
+       0
+       0
+
+A comparison between the cyclic model and finding the eigenvalues individually is made and plotted in the second figure.
+From the figure, we see that it is slightly less fast to calculate the elements one by one, but if you would be able to start the next processes by getting the eigenvalues one by one, then there is time to safe by initialising the next part of a calculation with the eigenvalues one by one.
+ However the first eigenvalue is still the most difficult to calculate, so there is still a significant wait before continuing the process.
+The function works properly and will produce the correct eigenvalues and vectors. With this conclusion, the second exercise is done.
+
+ 
+ Exercise C is started.
+
+ The 'Classic' Jacobi eigenvalue method have been implemented, and a test with the same matrix is shown, so the correct values can easily be checked with the calculations of exercise A:
+For test, we call the classic jacobi_diagonalisation with optimised termination of the largest elements in each row
+The modified Jacobi method ended in 9 sweeps
+One shall remember that theese found sweeps is thoughout all of the matrix. This means that the cyclic method cannot sweep-wise be compared, since it calculates every element in a sweep, were this indexed method only calculate one element in each collumn.
+The Classical Jacobi-method returned
+Eigenvectors V=
+   0.715	  -0.182	   0.208	   0.642	
+-0.00938	   0.303	  -0.874	    0.38	
+  -0.395	   0.648	   0.439	   0.481	
+  -0.577	  -0.674	 -0.0275	    0.46	
+Eigenvalues e=
+   -2.41
+    3.52
+    7.29
+    22.3
+
+With this succesfull demonstration, we can observe that the number of rotations may increase, but since it uses way fewer operations per rotaion it decreases computing time and are more efficient. We can compare the computation time between the cyclic and classical jacobi method for different matrix dimensions, this is shown in the corresponding figure.  The function work as planned, and returns the correct eigenvectors and values. This concludes the last exercise and the examniation of eigenvalues. 

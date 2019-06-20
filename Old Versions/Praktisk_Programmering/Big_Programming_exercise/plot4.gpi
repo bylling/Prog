@@ -1,0 +1,9 @@
+set term TERM
+set out 'OUT'
+set xlabel 'x'
+set ylabel 'y'
+set tics out
+set size 0.6,0.6
+plot \
+ "plot.data" using 1:7 with points title "calculated" \
+,"plot.data" using 1:(norm($5) <= 0.1 ? NaN : $5) with lines title "exact" \

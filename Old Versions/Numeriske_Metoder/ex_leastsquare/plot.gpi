@@ -1,0 +1,4 @@
+set terminal svg background 'white'; \
+plot [-0.2:10.5][-16.5:5]  \
+  'initial.data' using 1:2:3 with yerrorbars title 'y(x)' \
+, 'data1.txt' using 1:2 with lines title 'Fit using QR-decomp' \

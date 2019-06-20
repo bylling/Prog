@@ -1,0 +1,73 @@
+
+testing komplex_add...
+a= (1,2)
+b= (3,4)
+a+b should   =  (4,6)
+a+b actually =  (4,6)
+test 'add' passed :) 
+
+testing komplex_sub...
+a= (1,2)
+b= (3,4)
+a+b should   =  (2,2)
+a+b actually =  (2,2)
+test 'sub' passed :) 
+
+testing komplex_set...
+Set should return  =  (1,2)
+Set is actually =  (1,2)
+test 'set' passed :) 
+
+testing komplex_new...
+New should return  =  (1,2)
+New is actually =  (1,2)
+test 'New' passed :) 
+
+testing komplex_mul...
+a= (1,2)
+b= (3,4)
+a*b should   =  (3,8)
+a*b actually =  (3,8)
+test 'mul' passed :) 
+
+testing komplex_div...
+a= (1,2)
+b= (3,4)
+a/b should   =  (0.333333,0.5)
+a/b actually =  (0.333333,0.5)
+test 'mul' passed :) 
+
+testing komplex_conjugate...
+a= (1,2)
+Congugate of a should   =  (1,-2)
+Congugate of a is actually =  (1,-2)
+test 'mul' passed :) 
+
+testing komplex_abs...
+a= (1,2)
+Abs of a should   = 2.23607
+Abs of a is actually = 2.23607
+
+testing komplex_exp...
+a= (1,2)
+Exp of a should   =  (-1.1312,2.47173)
+Exp of a is actually =  (-1.1312,2.47173)
+test 'exp' passed :) 
+
+testing komplex_sin...
+a= (1,2)
+Sin of a should   =  (3.16578,1.9596)
+Sin of a is actually =  (3.16578,1.9596)
+test 'sin' passed :) 
+
+testing komplex_cos...
+a= (1,2)
+Cos of a should   =  (2.93272,3.0519)
+Cos of a is actually =  (2.03272,3.0519)
+test 'Cos' passed :) 
+
+testing komplex_sqrt...
+a= (1,2)
+Sqrt of a should   =  (1.27202,0.786151)
+Sqrt of a is actually =  (1.27202,0.786151)
+test 'Sqrt' passed :) 

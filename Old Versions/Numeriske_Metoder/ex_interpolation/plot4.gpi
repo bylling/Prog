@@ -1,0 +1,8 @@
+set terminal svg background 'white'; \
+set key left top
+set grid
+plot [0:6][0:31]  \
+  'qspline.data' using 1:4 with dots title 'Q-Spline' \
+,  'qspline.data' using 1:7 with dots title 'Q-diffSpline' \
+, 'qinitial.data' using 1:4 pt 7 ps 0.5 title 'Q-test-quadratic' \
+,  'qspline.data' using 1:10 with dots title 'Q-integSpline' \

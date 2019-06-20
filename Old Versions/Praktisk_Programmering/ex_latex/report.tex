@@ -1,0 +1,65 @@
+\documentclass[twocolumn]{article}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\begin{document}
+\title{Error function}
+\author{Wikipedia, the free encyclopedia}
+\date{}
+\maketitle
+
+\begin{abstract}
+A description of the errorfunction. Made by Wikipedia.
+\end{abstract}
+
+\section{Introduction}
+In mathematics, the \textbf{error function} (also called the \textbf{Gauss error function}) is a special function (non-Elementary function) of Sigmoid function shape that occurs in probability, statistics, and partial differential equations describing diffusion. It is defined as:
+
+
+\begin{align}
+\mathrm{erf}(x) & = \frac{1}{\sqrt{\pi}}\int_{-x}^x e^{-t^2} dt \\
+& = \frac{2}{\sqrt{\pi}}\int_0^x e^{-t^2} dt.
+\end{align} 
+
+
+In statistics, for nonnegative values of $x$, the error function has the following interpretation: for a random variable $Y$ that is normally distributed with mean $0$ and variance $0.5$, erf($x$) describes the probability of $y$ falling in the range [$-x$,$x$].
+
+
+\begin{figure}
+\input{plot-cairo.tex}
+\caption{Comparison between the calculated error function using differential equation found in "myerr.c" and the error function from the GSL-library.}
+\label{fig-error}
+\end{figure}
+
+
+There are several closely related functions, such as the complementary error function, the imaginary error function, and others.
+
+
+\section{Name}
+
+
+The name "error function" and its abbreviation $erf$ were proposed by J. W. L. Glaisher in 1871 on account of its connection with "the theory of Probability, and notably the theory of Errors". The error function complement was also discussed by Glaisher in a separate publication in the same year. For the "law of facility" of errors whose density is given by $f(x)=\left(\frac{c}{\pi}\right)^{\frac{1}{2}}e^{-cx^2}$ (the normal distribution), Glaisher calculates the chance of an error lying between $p$ and $q$ as:
+\begin{equation}
+\left(\frac{c}{\pi}\right)^{\frac{1}{2}} \int_p^qe^{-cx^2}dx =\frac{1}{2}\left(\mathrm{erf} (q\sqrt{c}) -\mathrm{erf} (p\sqrt{c})\right)\mathrm{.}
+\end{equation}
+
+\section{Applications}
+
+When the results of a series of measurements are described by a  normal distribution with standard deviation  $\sigma$ and expected value $0$, then $\mathrm{erf}\left(\frac{a}{\sigma \sqrt{2}}\right)$  is the probability that the error of a single measurement lies between $-a$ and $+a$, for positive $a$. This is useful, for example, in determining the bit error rate of a digital communication system.
+
+The error and complementary error functions occur, for example, in solutions of the heat equation when boundary conditions are given by the Heaviside step function.
+
+The error function and its approximations can be used to estimate results that hold with high probability. Given random variable $X \sim \mathrm{Norm}[\mu,\sigma]$ and constant $L<\mu$:
+\begin{equation}
+\mathrm{Pr}[X\leq L] = \frac{1}{2} + \frac{1}{2}\mathrm{erf}\left(\frac{L-\mu}{\sqrt{2}\sigma}\right) \approx A \exp \left(-B \left(\frac{L-\mu}{\sigma}\right)^2\right)
+\end{equation}
+
+where $A$ and $B$ are certain numeric constants. If $L$ is sufficiently far from the mean, i.e.   $\mu -L \geq \sigma\sqrt{\ln{k}}$, then:
+
+\begin{equation}
+\mathrm{Pr}[X\leq L] \leq A \exp (-B \ln{k}) = \frac{A}{k^B}
+\end{equation}
+
+so the probability goes to 0 as $k\rightarrow \infty$.
+
+
+\end{document}

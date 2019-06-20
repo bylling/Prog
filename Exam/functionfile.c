@@ -55,6 +55,8 @@ do{
   gsl_blas_ddot(V_new, V, &(numerator)); // We calculate the numerator x^T_i+1 * x_i
   // We estimate the  Rayleigh quotient
   NewRayleigh = (numerator)/(denominator);
+    // We normalize the found eigenvector not to hit machine epsilon errors
+  gsl_vector_scale(V_new,1./gsl_blas_dnrm2(V_new));
   // If the Rayleigh quotient changes, we break out of the loop
   if (NewRayleigh!=Rayleigh) {
   changed=1;
@@ -119,6 +121,9 @@ do{
   gsl_blas_ddot(V_new, V, &(numerator)); // We calculate the numerator x^T_i+1 * x_i
   // We estimate the  Rayleigh quotient
   NewRayleigh = (double)(numerator)/(double)(denominator);
+
+  // We normalize the found eigenvector not to hit machine epsilon errors
+  gsl_vector_scale(V_new,1./gsl_blas_dnrm2(V_new));
 
   // If the Rayleigh quotient changes, we break out of the loop
   if (NewRayleigh!=Rayleigh) {
@@ -196,6 +201,10 @@ do{
   gsl_blas_ddot(V_new, V, &(numerator)); // We calculate the numerator x^T_i+1 * x_i
   // We estimate the  Rayleigh quotient
   NewRayleigh = (numerator)/(denominator);
+
+  // We normalize the found eigenvector not to hit machine epsilon errors
+  gsl_vector_scale(V_new,1./gsl_blas_dnrm2(V_new));
+
   // If the Rayleigh quotient changes, we break out of the loop
   if (NewRayleigh!=Rayleigh) {
   changed=1;
@@ -229,7 +238,7 @@ return iter;
 }
 
 int inverse_iteration(gsl_matrix* A, gsl_vector* e, gsl_vector* V,double s,int update){ // Function for solution of the nearest eigenvalue near the guess "s" of a matrix using shifted inverse iteration by QR-decompostion and a user-defined eigenvalue-estimate update pattern.
-// This function is very similar to the previous methods, and differs by a shift in the matrix A by A-s*I, as well as using QR-decomposition to solve a linear system by backsubstitution instead of the
+// This function is very similar to the previous methods, and differs by a shift in the matrix A by A-s*I, as well as using QR-decomposition to solve a linear system by backsubstitution instead of finding the inverse.
 
 // We initialize our parameters
 int n = A->size1, iter = 0, changed;

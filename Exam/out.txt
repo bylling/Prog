@@ -1,0 +1,114 @@
+
+
+ ------------- The Final Exam -----------------
+Exercise 10: Inverse iteration algorithm for eigenvalues and eigenvectors. 
+
+Implement the variant of the inverse iteration method that calculates the eigenvalue closest to a given number s (and the corresponding eigenvector).
+
+The Exercise will now be made, and the analysis of the method are described in the report.pdf file.
+
+
+
+ ------------- Quick Test of the Algorithm -----------------
+As a test, to check whether the implementation works, an example is hereby made using a random real symmetric matrix.
+The reason for restricting this test to a symmetric matrix is the fact that any real symmetric matrix is Hermitian and therefore all of its eigenvalies are uniquely determined and are real.
+The random initial symmetric matrix with indices between 0 and 10 is:
+A=
+     8.4	    3.94	    7.83	
+    3.94	    7.98	    9.12	
+    7.83	    9.12	    1.98	
+
+
+ ------------- Previously made Classic Jacobi Method for Comparison -----------------
+The 'Classic' Jacobi eigenvalue method have been implemented as used in exercise C of the eigenvalue exercise, and will be used as a comparison. Thereby the recieved eigenvalues from the inverse iteration method can be easily checked with the calculations of the 'Classic' Jacobi eigenvalue method.
+For test, we call the classic jacobi_diagonalisation with optimised termination of the largest elements in each row
+The Classic Jacobi method ended in 6 sweeps.
+The Classic Jacobi-method returned
+Eigenvectors V=
+   0.329	   -0.75	   0.574	
+   0.448	   0.659	   0.604	
+  -0.831	  0.0591	   0.553	
+Eigenvalues e=
+   -6.03
+    4.32
+    20.1
+
+The check the method by calculation of V^T * A * V, which should be a matrix D with all eigenvalues on the diagonal.
+V^T * A * V = D = 
+   -6.03	-3.97e-10	8.88e-16	
+-3.97e-10	    4.32	1.07e-14	
+1.78e-15	1.15e-14	    20.1	
+We clearly see that we are able to reproduce the D-matrix, with the eigenvalues and must hereby have revieved the correct eigenvectors and eigenvalues from the classic jacobi algorithm.
+
+
+
+ ------------- Test 1. Power iteration method -----------------
+At first as a steppingstone to the inverse iteration method, we estimate the largest eigenvalue and eigenvector using the related but simpler power iteration method, which has been implemented.
+The Power iteration method ended in 23 iterations.
+The  Power iteration method returned
+Largest Eigenvector V=
+   0.574
+   0.604
+   0.553
+
+Largest Eigenvalue e=
+       0
+       0
+    20.1
+
+We see that the simple power iteration method can reproduce the largest eigenvalue and eigenvector by comparision with the Classic Jacobi method.
+
+
+ ------------- Test 2. Inverse power iteration method -----------------
+As a further steppingstone we consder the inverse power iteration, that works smilarly to the power interation method, but can find the lowest eigenvalue. This has been implemented and will now be tested. We find the inverse using teh Matrix inverse algorithm by Golub-Kahan-Lanczos bidiagonalization as in the linear equation-C exercise.  
+The inverse power iteration method ended in 58 iterations.
+The inverse power iteration method returned
+Smallest Eigenvector V=
+    0.75
+  -0.659
+ -0.0591
+
+Smallets Eigenvalue e=
+    4.32
+       0
+       0
+
+We see that the inverse power iteration method can reproduce the smallest eigenvalue and eigenvector by comparision with the Classic Jacobi method. If we want to find an arbitrary eigenvalue the simplest way is to implement a shifted inverse iteration, to check that the procedure works, before we reach the more clever inverse iteration method.
+
+
+ ------------- Test 3. Shifted Inverse iteration method -----------------
+The shifted inverse iteration around s = -5 ended in 11 iterations.
+The shifted inverse iteration method around s = -5 returned 
+Closest Eigenvector V=
+   0.329
+   0.448
+  -0.831
+
+Closest Eigenvalue e=
+   -6.03
+       0
+       0
+
+We see that the shifted inverse iteration method can reproduce the nearest eigenvalue and eigenvector by comparision with the results of the Classic Jacobi method. This method could be made more efficient by updating the shift, to the approximated eigenvalue for each step, but since it finishes in only 11 iterations this is only considered when going to the more clever inverse iteration method.
+
+
+
+
+ ------------- Final implementation: Inverse Iteration Method -----------------
+Finally the inverse iteration method has been made. This do not rely on the Golub-Kahan-Lanczos bidiagonalization for finding the inverse, but instead the more simple QR-decomposition to solve a linear system using backsubstitution instead of finding the inverse. This procedure will if we do not update the estimated eigenvalue cost O(n²) operations per iteration, but with a reestimation of the shift for every iteration the cost will be O(n³). Therefore the implementation has been made, so the user will be able to ask for the desired iterations per update of the estimated eigenvalue. 
+To directly see the efficiency of the inverse iteration method, we do not update the estimate of the eigenvalue in the following test, for direct comparison.
+The inverse iteration around s = -5 ended in 9 iterations, with an update every 3'th iteration'.
+The inverse iteration method around s = -5 returned 
+Closest Eigenvector V=
+  -0.329
+  -0.448
+   0.831
+
+Closest Eigenvalue e=
+   -6.03
+       0
+       0
+
+Two different implementations of the inverse iteration algorithm has hereby been made to find to nearest eigenvalue and eigenvector. They are both demonstrated, and are relying on finding the inverse through olub-Kahan-Lanczos bidiagonalization, and solving a linear system using QR-factorisation with backsubstitution respectively.
+A in-depth examination of the procedure are made in the corresponding report.pdf where additional information can be found.
+The quick demonstration is hereby done.

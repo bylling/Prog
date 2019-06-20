@@ -1,0 +1,110 @@
+Exercise A has started
+The Newton's method for back-tracking linesearch has been implemented, where the user provides the analytical gradient and the analytical Hessian matrix.
+We test the implementation by finding the minimum of the Rosenbrock function, 
+We use initial point at x0 = 
+       0
+       0
+
+The Newton method used 13 steps.
+The minima is supposed to be at x=[1,1] and found to be x = 
+       1
+       1
+
+We also test the implementation by finding the minimum of the Himmelblau's function, 
+We use initial point at x0 = 
+       2
+       2
+
+The Newton method used 6 steps.
+Solution is supposed to be one of four local minima at f(3.0,2.0)=0.0,f(−2.805118,3.131312)= 0.0, f(−3.779310,−3.283186)=0.0 or f(3.584428,-1.848126)=0.0, and found to be x = 
+       3
+       2
+
+However the function could also have found a local maxima, since the gradient is also zero at maxima. 
+This concludes the first exercise.  
+ 
+ 
+Exercise B has started
+A modified Quasi Newton's method for back-tracking linesearch has been implemented using Broyden's update, where the user provides the analytical gradient and the analytical Hessian matrix.
+Futhermore the root-finding method of the previous exercise have been reimplemented to compare, since root-finding and minimization are the same, when the minima of the function corresponds to a root-value.
+We test the implementations, by comparing with the results of the previous calculations. All with the same accuracy.
+Now we find the solution for the minimum of the Rosenbrock funciton.
+The Quasi Newtons method used 11251 steps and the root-finding used 18 steps, compared to the Newtons method of 13 steps. 
+The minima is supposed to be x=[1,1] and found by the Quasi Newton method to be x = 
+       1
+       1
+
+Similarly using the root-finding method it is found to be x = 
+       1
+       1
+
+Now we find the solution for the minimum of the Himmelblau funciton.
+The Quasi Newtons method used 27 steps and the root-finding used 8 steps, compared to the Newtons method of 6 steps. 
+The minima is supposed to be one of four local minima at f(3.0,2.0)=0.0,f(−2.805118,3.131312)= 0.0, f(−3.779310,−3.283186)=0.0 or f(3.584428,-1.848126)=0.0, and found to be x = 
+       3
+       2
+
+Similarly using the root-finding method, we find another solution, which is found to be x = 
+    3.58
+   -1.85
+
+By comparing the solutions, we see that the Newtons method is clearly the best, but also uses the fact, that we know the analytical Hessen matrix: The rootfinding method is a bit worse, since it only considers an optimisation in one cross-section at a time, and therefore require more steps, or can find another solution. The Quasi Newton method have more parameters including the stepsize, which can be optimized to the system in case. However since the Hessen matrix is build through iterations at each step, this must converge more slowly. 
+At last we want to use the minimization to solve a non-linear least-squares fitting problem.
+We read in the data and start the fitting:
+We use initial guess at [A,T,B] = 
+       5
+       2
+       1
+
+The Quasi Newtons method used 328 steps, to converge to a fit. This is the only method in use, since we have only provided the analytical gradient, and not the analytical Hessen matrix. The fact, that the solution is sufficient can later be verified by inspection of the plot. 
+The Quasi Newtons Method returned fited [A,T,B] = 
+    3.56
+    3.21
+    1.23
+
+The fitted data is printed to a datafile, and the fit with the experimental data is shown in the corresponding figure. 
+This concludes the Second exercise.  
+ 
+ 
+Exercise C has started
+A implementation of the Downhill simplex method has been made from the description in the lecture notes. 
+It will now be used to calculate all three previous systems, and its results will be compared to the other methods. For all of the simplex-es, random startvalues are applied with the first quadrant with no numbers larger than 10.
+We start by the Rosenbrock function and initialize our simplex.
+The random initialized start-simplex will be
+ 8.40188 3.94383
+ 7.83099 7.9844
+ 9.11647 1.97551
+We start the minimization of the RosenBrock function
+The minima is supposed to be around x=[1,1], and the found minimum simplex is with corners at
+[ 1  1 ] 
+[ 1  1 ] 
+[ 1  1 ] 
+With that succes, now we find the solution for the minimum of the Himmelblau funciton.
+The random initialized start-simplex will be
+ 3.35223 7.6823
+ 2.77775 5.5397
+ 4.77397 6.28871
+We start the minimization of the Himmelblau function
+The minima is supposed to be to be one of four local minima at f(3.0,2.0)=0.0,f(−2.805118,3.131312)= 0.0, f(−3.779310,−3.283186)=0.0 or f(3.584428,-1.848126)=0.0, and the found minimum simplex is with corners at x = 
+[ 3  2 ] 
+[ 3  2 ] 
+[ 3  2 ] 
+Also with that succes, we now find the solution to the minimization for solving a non-linear least-squares fitting problem .
+The random initialized start-simplex will be
+ 3.64784 5.13401 9.5223
+ 9.16195 6.35712 7.17297
+ 1.41603 6.06969 0.163006
+ 2.42887 1.37232 8.04177
+We start the minimization of the non-linear least-squares fitting problem. 
+The Quasi Newtons Method returned fited [A,T,B] = 
+    3.56
+    3.21
+    1.23
+
+The found minimum simplex is with corners at
+[ 3.55702  3.20543  1.23193 ] 
+[ 3.55702  3.20543  1.23193 ] 
+[ 3.55702  3.20542  1.23193 ] 
+[ 3.55702  3.20542  1.23193 ] 
+The downhillsimplex-method have hereby been implemented and are able to reproduce every previous result. 
+This ends the third and final exercise. 

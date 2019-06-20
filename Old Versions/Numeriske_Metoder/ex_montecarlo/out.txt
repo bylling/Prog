@@ -1,0 +1,59 @@
+Exercise A has started
+
+A plain monte carlo integrator have been implemented. It estimates an integral between two points and returns both the result and an error estimate. To test it, we use the three test integrals from the previous integration-exercise, since theese are all one dimensional and increase in difficulity due to singularities, they are well suited to test this integrator.
+All of the integrals will be made with the monte carlo method using 1000000 points.
+Test 1: I = ∫ from 0 to 1 of √(x) dx = 2/3 = 0.66..
+The calculation is started. 
+The calculation is done. 
+The found values are: integral I=0.666693 with error=0.000235641 
+
+Test 2: I = ∫ from 0 to 1 of 1/√(x) dx = 2 
+The calculation is started. 
+The calculation is done. 
+The found values are: integral I=1.99992 with error=0.00339782 
+
+Test 3: I = ∫ from 0 to 1 of ln(x)/√(x) dx = -4 
+The calculation is started. 
+The calculation is done. 
+The found values are: integral I=-3.94184 with error=0.036093 
+
+We see that as the difficulity of the integral increases, the error also increases. For theese calculations we have held all other parameters constant, but now we are going to challenge the integrator to the fullest, since we will calculate a singular integral in 3 Dimensions. 
+This time, we use a higher number of points, since we are dealing with a 3 dimensional integral, we use 10000000 points.
+Calculation: I =∫ from 0 to π  dx/π ∫ from 0 to π  dy/π ∫ form 0 to π  dz/π of [1-cos(x)cos(y)cos(z)]^-1 = Γ(1/4)^4/(4π^3)  
+The calculation is started. 
+The calculation is done. 
+The found values are:  
+ Known solution:  Γ(1/4)^4/(4π^3) = 1.3932039296856768591842462603255  
+ Found solution                 I = 1.3911626641512593316463 
+ With                       error = 0.00357573 
+
+With this successfull demonstration of the monte carlo integrator doing a multidimensional integral, the first exercise is hereby finished.
+
+
+Exercise B has started
+
+To check that the error of the plain Monte Carlo method is of order O(1/sqrt(N)) we choose the particularly simple integral from Test 1, and evaluate it at multiple different values of N, to see the dependency of the error. 
+
+We calculate I = ∫ from 0 to 1 of √(x) dx = 2/3 = 0.66..
+The calculation is started. 
+The calculation is done. 
+The found values from the calculation are plotted in the corresponding figure. The figure is plotted with the absolute error as a funciton of 1/sqrt(N), whereas a linear function will correspond to the expected dependency. 
+We see in the figure that for few N the error-dependency varies a bit, but for large N we clearly see the linear dependency in the plot, corresponding to a 1/sqrt(N)-behaviour. 
+With this successfull demonstration of the error-behaviour as a function of N for the plain monte carlo integrator, through solution of a simple integral for different N and correlation of the results in the corresponding figure, the second exercise is hereby finished.
+
+
+Exercise C has started.
+
+A recursive stratified sampling monte carlo integrator have been implemented. It estimates an integral between two points and returns both the result and an error, that will be below the requested error. To test it, we use a combination of the first and second test integrals from the previous integration-exercise, since the first is fairly simple, where the second will be a bit more complicated. This allows the sampling algorithm to focus on the dificult integral-dimension. The combination of the two integrals are herby well suited to test this integrator.
+
+Test: I = ∫ from 0 to 1 dx ∫ from 0 to 1 dy of √(x)/√(y) = 2 * 2/3 = 4/3 
+The test is calculated with only 60 point at each level of recursion. 
+The calculation is started. 
+The calculation is done. 
+The found values are:  
+ Known solution:              4/3 = 1.333333  
+ Found solution                 I = 1.3456704500560723314351 
+ With                       error = 0.0104382 
+
+With this successfull demonstration of the recursive stratified sampling monte carlo integrator, through solution of a well suited integral, the third exercise is hereby finished.
+This ends the exercise on Monte Carlo Integration.

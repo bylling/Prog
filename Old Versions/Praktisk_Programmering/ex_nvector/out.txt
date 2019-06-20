@@ -1,0 +1,31 @@
+
+main: testing nvector_alloc ...
+test passed
+
+main: testing nvector_set and nvector_get ...
+test passed
+
+main: testing nvector_add ...
+a+b should   =      1.18      1.71     0.533      1.05      1.03 
+a+b actually =      1.18      1.71     0.533      1.05      1.03 
+test passed
+
+main: testing nvector_dot_product ...
+a+b should   = 1.41218
+a+b actually = 1.41218
+test passed
+
+main: testing nvector_set_zero ...
+Zero should   =         0         0         0         0         0 
+Zero actually =         0         0         0         0         0 
+test passed
+
+main: testing nvector_sub ...
+a-b should   =      1.18      1.71     0.533      1.05      1.03 
+a-b actually =      1.18      1.71     0.533      1.05      1.03 
+test passed
+
+main: testing nvector_scale ...
+a scaled y should   =      0.48     0.144     0.381      0.26      0.38 
+a scaled y actually =      0.48     0.144     0.381      0.26      0.38 
+test passed

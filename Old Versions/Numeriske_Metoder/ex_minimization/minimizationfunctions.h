@@ -1,0 +1,11 @@
+double function_rosenbrock_with_H(gsl_vector* x,gsl_vector* y, gsl_matrix* H);
+double function_himmel_with_H(gsl_vector* x,gsl_vector* y, gsl_matrix* H);
+double function_rosenbrock_without_H(gsl_vector* x,gsl_vector* y);
+double function_himmel_without_H(gsl_vector* x,gsl_vector* y);
+double function_rosenbrock_simple(double* x);
+double function_himmel_simple(double* x);
+int newton_with_hessian(double function(gsl_vector* x, gsl_vector* fx, gsl_matrix* H), gsl_vector* x, double epsilon);
+int quasi_newton_with_hessian(double function(gsl_vector* x, gsl_vector* fx), gsl_vector* x, double epsilon);
+int hessian_broyden_update(gsl_matrix* H, gsl_matrix* H_new, gsl_vector* y, gsl_vector* s, double lambda);
+double function_fit_without_H(gsl_vector* x,gsl_vector* grad);
+double function_fit_simple(double* x);
