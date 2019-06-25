@@ -76,7 +76,7 @@ The root finding starts:
 
 The root finding starts: 
 
- The GSL_root finding for the Himmelblau function has ended, in 11 steps at point [-0.127961,-1.95371] 
+ The GSL_root finding for the Himmelblau function has ended, in 15 steps at point [0.0866775,2.88425] 
 To compare we find, that the GSL-multiroot functions is doing more steps than our functions, in order to find the correct value. However, the GSL functions are modified and optimized for the platfor. This gives the result that the functioncalls will be reduced, but sometimes make the stepnumber go higher instead. Therefore even thought it uses more steps, it might be way faster, and could be further optimized using a designated type instead of the gsl_multiroot_fsolver_hybrids 
 With a comparison to the GSL routines, and the implementation of the numerical solver for the Jacobian, exercise B is hereby concluded.
  

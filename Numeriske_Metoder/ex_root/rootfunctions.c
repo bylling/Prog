@@ -313,7 +313,7 @@ int gslroot_rosen(double * z,double * z2){
 	gsl_vector* start = gsl_vector_alloc(F.n);
 
   gsl_vector_set (start, 0, *z); // We use the same start-values as before
-  gsl_vector_set (start, 0, *z2);
+  gsl_vector_set (start, 1, *z2);
 
 	gsl_multiroot_fsolver_set(S,&F,start);
 
@@ -350,7 +350,7 @@ int gslroot_himmel(double * z,double * z2){
 
 	gsl_vector* start = gsl_vector_alloc(F.n);
 
-  gsl_vector_set (start, 1, *z); // We use the same start-values as before
+  gsl_vector_set (start, 0, *z); // We use the same start-values as before
   gsl_vector_set (start, 1, *z2);
 
 	gsl_multiroot_fsolver_set(S,&F,start);
